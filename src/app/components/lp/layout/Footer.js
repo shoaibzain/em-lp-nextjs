@@ -59,17 +59,17 @@ const Footer = ({ title, subtitle, content }) => {
   };
 
   return (
-    <footer id="contact" className="bg-black px-4 sm:px-0 lg:px-0 text-white">
-      <div className="flex mx-auto w-full container px-4 sm:px-6 lg:px-8">
+    <footer id="contact" className="bg-black py-10 px-4 sm:px-0 lg:px-0 text-white">
+      <div className="flex mx-auto w-full container px-4">
         {/* Left Column - Text */}
-        <div className="w-1/2 flex flex-col justify-center p-12 pr-12">
+        <div className="w-1/2 flex flex-col justify-center px-5 pr-20">
           <h4 className="text-xl mb-5">{subtitle}</h4>
           <h2 className="text-5xl font-bold mb-5">{title}</h2>
           <p className="text-zinc-600">{content}</p>
         </div>
 
         {/* Right Column - Form */}
-        <div className="w-1/2 p-12 text-gray-500">
+        <div className="w-1/2 px-5 text-gray-500">
           {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
           {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>

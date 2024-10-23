@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'primary-gradient': 'linear-gradient(-151deg, rgba(226, 20, 104, 1) 0%, rgba(105, 5, 46, 1) 93%)',
+      },
       container: {
         center: true,
         padding: "15px",

@@ -13,7 +13,7 @@ export default function Affordable({ title, content, buttonText, backgroundColor
             <div className="container">
                 <div className="columns-1 flex justify-center">
                     <div className="w-2/5 border-2 p-4 rounded-2xl">
-                        <div className="bg-primary rounded py-10 text-center">
+                        <div className="bg-primary-gradient rounded py-10 text-center">
                             <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
                                 Big Ideas
                             </div>

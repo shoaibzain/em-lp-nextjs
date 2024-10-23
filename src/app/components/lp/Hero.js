@@ -6,7 +6,7 @@ export default function Hero() {
                 <div className="columns-1">
                     <div className=" text-white text-center">
                         <p className="text-3xl">Reach New Heights with the assistance of our</p>
-                        <h1 className="text-5xl leading-normal font-bold mt-5 flex justify-center"><span>Digital</span> <b className="bg-primary rounded-full px-4 leading-snug rotate-356">Marketing</b> <span>Solutions</span></h1>
+                        <h1 className="text-5xl leading-normal font-bold mt-5 flex justify-center"><span>Digital</span> <b className="bg-primary font-bold my-2 rounded-full px-4 leading-snug rotate-356">Marketing</b> <span>Solutions</span></h1>
                     </div>
                 </div>
             </div>

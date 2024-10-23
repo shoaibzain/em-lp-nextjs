@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function Portfolio() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-black py-32 overflow-hidden">
-            <div className="grid gap-8 md:grid-cols-3">
+        <div id="portfolio" className="flex min-h-screen flex-col items-center justify-center bg-black py-32 overflow-hidden">
+            <div className="grid gap-8 md:grid-cols-3 w-full">
                 <div className="-ml-40">
                     <Image
                         src="/images/left-portfolio.png"
@@ -22,7 +22,7 @@ export default function Portfolio() {
                         
                     </button>
                 </div>
-                <div className="-mr-40">
+                <div className="-mr-40 flex justify-end">
                     <Image
                         src="/images/right-portfolio.png"
                         alt="Right showcase image"
