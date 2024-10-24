@@ -13,7 +13,7 @@ export default function Hero() {
           <source src="/videos/hero-background.webm" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-1"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 z-1"></div>
         <div className="container relative z-2">
           <div className="columns-1">
             <div className="text-white text-center">
