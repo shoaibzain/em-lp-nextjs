@@ -14,9 +14,9 @@ export default function Portfolio() {
                     />
                 </div>
                 <div className="flex flex-col items-center justify-center text-center">
-                    <h1 className="mb-6 text-base leading-tight text-white sm:text-base md:text-base">
+                    <h2 className="mb-6 text-base leading-tight text-white sm:text-base md:text-base">
                         Like a lion&apos;s roar echoing through <br/> the jungle, a hint of our creative<br/> minds emerges.
-                    </h1>
+                    </h2>
                     <button className="group inline-flex items-center rounded-full bg-primary px-4 py-2 text-base font-normal text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-black">
                         See full Portfolio
                         
