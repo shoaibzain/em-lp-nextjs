@@ -42,7 +42,7 @@ export default function Header() {
   }, [sections]);
 
   return (
-    <header className="z-10 shadow-md py-4 fixed w-full top-0 dark:text-slate-200 bg-slate-50/90 dark:bg-slate-700/90 backdrop-blur-sm ring-1 ring-slate-900/10 dark:ring-black/10">
+    <header className="z-10 shadow-md py-4 top-0 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10">
       <nav className="w-full container px-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center">
