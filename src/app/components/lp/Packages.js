@@ -67,7 +67,7 @@ export default function Packages() {
                             {packages
                                 .filter((pkg) => pkg.service === service.id) // Filter packages based on service
                                 .map((pkg, index) => (
-                                    <div key={index} className="dark:text-slate-200 bg-slate-50/20 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between">
+                                    <div key={index} className="bg-slate-50/20 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between">
                                         <div className="w-full">
                                             <h3 className="text-4xl font-bold mb-2">{pkg.name}</h3>
                                             <p className="text-6xl font-thin mb-2"><span>{pkg.price}</span> <sup className="text-3xl font-bold -top-6">AED</sup></p>

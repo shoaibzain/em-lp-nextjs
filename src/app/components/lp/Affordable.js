@@ -1,5 +1,8 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image';
-import { Montserrat, Open_Sans } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 
 const openSans = Open_Sans({
     weight: ['400', '500', '600', '700'], // Specify the weights you need
@@ -7,12 +10,21 @@ const openSans = Open_Sans({
     display: 'swap', // Optional: 'swap' for better performance
 });
 
-export default function Affordable({ title, content, buttonText, backgroundColor }) {
+export default function Affordable() {
+    const [activeSection, setActiveSection] = useState(null)
+
+    const toggleSection = (section) => {
+        setActiveSection(activeSection === section ? null : section)
+    }
+
+
     return (
         <section id="affordable" className={`affordable bg-black py-32 ${openSans.className}`}>
             <div className="container">
                 <div className="columns-1 flex justify-center">
-                    <div className="w-2/5 border-2 p-4 rounded-2xl">
+                    <div className={`w-2/5 border-2 p-4 rounded-2xl ${activeSection ? 'w-full' : 'w-2/5'
+                            }`}
+                        onClick={() => toggleSection('digital-marketing')}>
                         <div className="bg-primary-gradient rounded py-10 text-center">
                             <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
                                 Big Ideas
