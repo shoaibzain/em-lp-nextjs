@@ -19,9 +19,9 @@ export default function About() {
     return (
         <section id="whatwedo" className="about relative h-screen bg-black bg-contain bg-no-repeat bg-left bg-[url('/images/about-bg.png')]">
             <div className="w-full container px-4">
-                <div className="flex w-96 mx-auto gap-12 h-screen">
+                <div className="flex w-96 mx-auto gap-12 h-screen relative -top-28">
                     <div
-                        className={`w-24 bg-primary h-2/5 flex items-end justify-end cursor-pointer transition-all duration-300 ${activeSection === 'digital-marketing' ? 'h-[90%]' : ''
+                        className={`w-24 bg-primary h-2/4 flex items-end justify-end cursor-pointer clip-custom-sharp transition-all duration-300 ${activeSection === 'digital-marketing' ? 'h-[100%]' : ''
                             }`}
                         onClick={() => toggleSection('digital-marketing')}
                     >
@@ -32,7 +32,7 @@ export default function About() {
                         </div>
                     </div>
                     <div
-                        className={`w-24 bg-primary h-2/5 flex items-end justify-end cursor-pointer transition-all duration-300 ${activeSection === 'seo' ? 'h-[90%]' : ''
+                        className={`w-24 bg-primary h-2/4 flex items-end justify-end cursor-pointer clip-custom-sharp  transition-all duration-300 ${activeSection === 'seo' ? 'h-[100%]' : ''
                             }`}
                         onClick={() => toggleSection('seo')}
                     >
@@ -43,7 +43,7 @@ export default function About() {
                         </div>
                     </div>
                     <div
-                        className={`w-24 bg-primary h-2/5 flex items-end justify-end cursor-pointer transition-all duration-300 ${activeSection === 'web-design' ? 'h-[90%]' : ''
+                        className={`w-24 bg-primary h-2/4 flex items-end justify-end cursor-pointer clip-custom-sharp  transition-all duration-300 ${activeSection === 'web-design' ? 'h-[100%]' : ''
                             }`}
                         onClick={() => toggleSection('web-design')}
                     >
@@ -54,12 +54,12 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center h-min top-[44%]">
+                <div className="absolute inset-0 flex items-center justify-center h-min top-[38%]">
                     <div className={`text-8xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter text-center ${openSans.className}`}>
                         What We Do
                     </div>
                 </div>
-                <div className='absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-left'>
+                <div className='absolute bottom-24 left-1/2 transform -translate-x-1/2 text-white text-left'>
                     {activeSection === 'digital-marketing' && (
                         <div className='relative w-80 left-20'>
                             <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>

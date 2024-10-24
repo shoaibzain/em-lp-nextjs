@@ -24,6 +24,9 @@ module.exports = {
       rotate: {
         '356': '356deg',
       },
+      clipPath: {
+        'custom-sharp': 'polygon(0 20%, 100% 0, 100% 100%, 0 100%)',
+      },
     },
   },
   plugins: [
@@ -40,6 +43,9 @@ module.exports = {
         '.text-stroke-lg': {
           '-webkit-text-stroke': '3px #ffffff',
           'color': 'transparent',
+        },
+        '.clip-custom-sharp': {
+          clipPath: 'polygon(0 20%, 100% 0, 100% 100%, 0 100%)',
         },
       };
 
