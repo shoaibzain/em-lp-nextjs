@@ -62,21 +62,25 @@ export default function Packages() {
             <div className="w-full container mx-auto px-4 -mt-8">
 
                 {services.map((service) => (
-                    <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}> 
+                    <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3    ">
                             {packages
                                 .filter((pkg) => pkg.service === service.id) // Filter packages based on service
                                 .map((pkg, index) => (
-                                    <div key={index} className="dark:text-slate-200 bg-slate-50/20 dark:bg-slate-700/90 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4">
-                                        <h3 className="text-4xl font-bold mb-2">{pkg.name}</h3>
-                                        <p className="text-6xl font-thin mb-2"><span>{pkg.price}</span> <sup className="text-3xl font-bold -top-6">AED</sup></p>
-                                        <p className="mb-4 font-semibold">AED Billed Monthly</p>
-                                        <p className="mb-0 font-semibold">Platforms:</p>
-                                        <p className="mb-4">{pkg.platforms}</p>
-                                        <p className="text-lg mb-4 font-semibold">{pkg.package}</p>
-                                        <button className="w-full bg-white text-pink-600 hover:bg-pink-100 py-2 rounded-md transition-colors">
-                                            Get Started
-                                        </button>
+                                    <div key={index} className="dark:text-slate-200 bg-slate-50/20 dark:bg-slate-700/90 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between">
+                                        <div className="w-full">
+                                            <h3 className="text-4xl font-bold mb-2">{pkg.name}</h3>
+                                            <p className="text-6xl font-thin mb-2"><span>{pkg.price}</span> <sup className="text-3xl font-bold -top-6">AED</sup></p>
+                                            <p className="mb-4 font-semibold">AED Billed Monthly</p>
+                                            <p className="mb-0 font-semibold">Platforms:</p>
+                                            <p className="mb-4">{pkg.platforms}</p>
+                                            <p className="text-lg mb-4 font-semibold">{pkg.package}</p>
+                                        </div>
+                                        <div className="text-center w-full mt-5">
+                                            <button className="group rounded-full bg-primary px-2 py-1 text-base font-semibold text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:ring-0 focus:bg-neutral-700 focus:ring-offset-2 focus:ring-offset-neutral-700">
+                                                Get Started
+                                            </button>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
