@@ -18,7 +18,6 @@ export default function Packages() {
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "social-media" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "social-media" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "social-media" },
-        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "social-media" },
 
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "web-design" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "web-design" },
@@ -28,25 +27,21 @@ export default function Packages() {
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "app-dev" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "app-dev" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "app-dev" },
-        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "app-dev" },
 
 
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "seo" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "seo" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "seo" },
-        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "seo" },
 
 
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "marketing" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "marketing" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "marketing" },
-        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "marketing" },
 
 
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic branding Package", service: "branding" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "branding" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "branding" },
-        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "branding" },
 
     ];
 
@@ -59,11 +54,11 @@ export default function Packages() {
                     </h2>
                 </div>
             </div>
-            <div className="w-full container mx-auto px-4 -mt-8">
+            <div className="w-3/4 container mx-auto px-4 -mt-8">
 
                 {services.map((service) => (
                     <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3    ">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3    ">
                             {packages
                                 .filter((pkg) => pkg.service === service.id) // Filter packages based on service
                                 .map((pkg, index) => (

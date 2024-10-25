@@ -8,7 +8,7 @@ export default function Hero() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         aria-hidden="true"
-        poster="/images/banner.jpg"
+        preload="none"
       >
         <source src="/videos/hero-background.webm" type="video/mp4" />
         Your browser does not support the video tag.
@@ -20,7 +20,7 @@ export default function Hero() {
             <p className="text-3xl">Reach New Heights with the assistance of our</p>
             <h1 className="text-5xl leading-normal font-bold mt-5 flex flex-wrap justify-center">
               <span>Digital</span>
-              <b className="bg-primary font-bold my-2 mx-2 rounded-full px-4 leading-snug rotate-356">
+              <b className="bg-primary font-bold my-2 mx-2 rounded-full px-4 leading-snug transform -rotate-6">
                 Marketing
               </b>
               <span>Solutions</span>

@@ -20,26 +20,22 @@ export default function Header() {
     setMenuOpen(!menuOpen);
   };
 
-  // Set up the Intersection Observer
   useEffect(() => {
     const handleScroll = () => {
+      const sections = document.querySelectorAll("section");
+      let current = "";
       sections.forEach((section) => {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const { top } = element.getBoundingClientRect();
-          if (top <= window.innerHeight / 2 && top >= -element.clientHeight / 2) {
-            setActiveSection(section.id);
-          }
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 60) {
+          current = section.getAttribute("id");
         }
       });
+      setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [sections]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="z-10 shadow-md py-4 top-0 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10">
@@ -52,6 +48,7 @@ export default function Header() {
               alt="Express Marketing"
               width={150}
               height={42}
+              priority
             />
           </Link>
         </div>
@@ -83,31 +80,33 @@ export default function Header() {
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu}>
+          <button
+            onClick={toggleMenu}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
             {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden px-6 pb-4">
-          <ul className="space-y-4">
-            {sections.map((section) => (
-              <li key={section.id}>
-                <Link
-                  href={`#${section.id}`}
-                  scroll={false}
-                  className={`text-gray-700 hover:text-primary ${activeSection === section.id ? 'text-primary' : ''}`}
-                  onClick={toggleMenu}
-                >
-                  {section.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div id="mobile-menu" className={`md:hidden px-6 pb-4 transition duration-300 ease-in-out ${menuOpen ? 'block' : 'hidden'}`}>
+        <ul className="space-y-4">
+          {sections.map((section) => (
+            <li key={section.id}>
+              <Link
+                href={`#${section.id}`}
+                scroll={false}
+                className={`text-gray-700 hover:text-primary ${activeSection === section.id ? 'text-primary' : ''}`}
+                onClick={toggleMenu}
+              >
+                {section.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 }

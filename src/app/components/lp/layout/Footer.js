@@ -70,8 +70,10 @@ const Footer = ({ title, subtitle, content }) => {
 
         {/* Right Column - Form */}
         <div className="w-1/2 px-5 text-gray-500">
-          {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
-          {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
+          {/* Success & Error Messages */}
+          {successMessage && <div role="alert" className="text-green-500 mb-4">{successMessage}</div>}
+          {Object.values(errors).length > 0 && <div role="alert" className="text-red-500 mb-4">Please fix the highlighted errors</div>}
+
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             {/* Row 1 - Name and Company */}
             <div className="flex gap-4">
@@ -201,6 +203,7 @@ const Footer = ({ title, subtitle, content }) => {
               Submit Enquiry
             </button>
           </form>
+
         </div>
       </div>
     </footer>
