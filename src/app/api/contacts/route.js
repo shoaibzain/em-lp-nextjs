@@ -5,6 +5,12 @@ export async function POST(request) {
 
     const brevoApiKey = process.env.BREVO_API_KEY; // Make sure to set this in your .env.local
 
+    console.log('Received data:', { name, email, message });
+
+    if (!name || !email || !message) {
+        return new Response(JSON.stringify({ success: false, message: 'All fields are required.' }), { status: 400 });
+    }
+
     try {
         const response = await axios.post('https://api.brevo.com/v3/smtp/email', {
             sender: { email: 'info@expressmarketing.ae', name: 'EM LP' }, // Use your verified sender email
@@ -28,6 +34,7 @@ export async function POST(request) {
             }
         });
 
+console.log('Email sent successfully:', response.data);
         return new Response(JSON.stringify({ success: true, data: response.data }), { status: 200 });
     } catch (error) {
         console.error(error);
