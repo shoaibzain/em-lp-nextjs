@@ -1,12 +1,11 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiMenu, FiX, FiPhone } from 'react-icons/fi';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
 
   const sections = [
     { id: 'hero', name: 'Home' },
@@ -19,23 +18,6 @@ export default function Header() {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 60) {
-          current = section.getAttribute("id");
-        }
-      });
-      setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <header className="z-10 shadow-md py-4 top-0 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10">
@@ -61,7 +43,7 @@ export default function Header() {
                 <Link
                   href={`#${section.id}`}
                   scroll={true}
-                  className={`hover:text-primary ${activeSection === section.id ? 'text-primary' : ''}`}
+                  className={`hover:text-primary ${section.id === 'hero' ? 'text-primary' : ''}`}
                 >
                   {section.name}
                 </Link>
@@ -92,13 +74,13 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div id="mobile-menu" className={`md:hidden px-6 pb-4 transition duration-300 ease-in-out ${menuOpen ? 'block' : 'hidden'}`}>
-        <ul className="space-y-4">
+        <ul className="space-y-4 text-gray-900">
           {sections.map((section) => (
             <li key={section.id}>
               <Link
                 href={`#${section.id}`}
-                scroll={false}
-                className={`text-gray-700 hover:text-primary ${activeSection === section.id ? 'text-primary' : ''}`}
+                scroll={true}
+                className={`hover:text-primary ${section.id === 'hero' ? 'text-primary' : ''}`}
                 onClick={toggleMenu}
               >
                 {section.name}

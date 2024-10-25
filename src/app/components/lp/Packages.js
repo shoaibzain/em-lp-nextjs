@@ -19,17 +19,16 @@ export default function Packages() {
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "social-media" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "social-media" },
 
-        { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "web-design" },
+        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "web-design" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "web-design" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "web-design" },
-        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "web-design" },
 
         { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "app-dev" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "app-dev" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "app-dev" },
 
 
-        { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic Social Media Package", service: "seo" },
+        { name: "Enterprise", price: "3,599", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Advance Social Media Marketing Package", service: "seo" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "seo" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "seo" },
 
@@ -39,7 +38,7 @@ export default function Packages() {
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "marketing" },
 
 
-        { name: "Starter", price: "999", platforms: "Facebook & Instagram", package: "Basic branding Package", service: "branding" },
+        { name: "Enterprise", price: "999", platforms: "Facebook & Instagram", package: "Basic branding Package", service: "branding" },
         { name: "Express", price: "1,599", platforms: "Facebook & Instagram", package: "Social Media Growth Accelerator", service: "branding" },
         { name: "Business", price: "2,999", platforms: "Facebook, Instagram, Linkedin & Twitter", package: "Comprehensive Social Media Marketing Package", service: "branding" },
 

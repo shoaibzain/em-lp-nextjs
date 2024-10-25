@@ -3,61 +3,43 @@
 import { useState } from 'react';
 
 const Footer = ({ title, subtitle, content }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    services: '',
-    budget: '',
-    message: '',
-  });
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required.";
-    if (!formData.company) newErrors.company = "Company is required.";
-    if (!formData.email) newErrors.email = "Email is required.";
-    if (!formData.phone) newErrors.phone = "Phone is required.";
-    if (!formData.services) newErrors.services = "Service selection is required.";
-    if (!formData.budget) newErrors.budget = "Budget is required.";
-    return newErrors;
-  };
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [services, setServices] = useState('');
+  const [budget, setBudget] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
+    setStatus('Sending...');
 
-    if (Object.keys(validationErrors).length) {
-      setErrors(validationErrors);
-      return;
+    const response = await fetch('/api/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, company, email, phone, services, budget, message }),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setStatus('Message sent successfully!');
+    } else {
+      setStatus('Error sending message. Please try again.');
     }
 
-    setErrors({});
-
-    // Example API call to Brevo (Sendinblue) can go here
-    // If successful:
-    setSuccessMessage("Form submitted successfully!");
-    setErrorMessage("");
-    setFormData({
-      name: '',
-      company: '',
-      email: '',
-      phone: '',
-      services: '',
-      budget: '',
-      message: '',
-    });
+    // Reset the form
+    setName('');
+    setCompany('');
+    setEmail('');
+    setPhone('');
+    setServices('');
+    setBudget('');
+    setMessage('');
   };
-
   return (
     <footer id="contact" className="bg-black py-10 px-4 sm:px-0 lg:px-0 text-white">
       <div className="flex mx-auto w-full container px-4">
@@ -70,11 +52,8 @@ const Footer = ({ title, subtitle, content }) => {
 
         {/* Right Column - Form */}
         <div className="w-1/2 px-5 text-gray-500">
-          {/* Success & Error Messages */}
-          {successMessage && <div role="alert" className="text-green-500 mb-4">{successMessage}</div>}
-          {Object.values(errors).length > 0 && <div role="alert" className="text-red-500 mb-4">Please fix the highlighted errors</div>}
 
-          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Row 1 - Name and Company */}
             <div className="flex gap-4">
               <div className="flex flex-col w-full relative">
@@ -84,13 +63,10 @@ const Footer = ({ title, subtitle, content }) => {
                   name="name"
                   type="text"
                   placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
-                {errors.name && (
-                  <span className=" text-red-500 text-sm">{errors.name}</span>
-                )}
               </div>
               <div className="flex flex-col w-full relative">
                 <label className="text-sm mb-1 text-white" htmlFor="company">Company</label>
@@ -99,13 +75,10 @@ const Footer = ({ title, subtitle, content }) => {
                   name="company"
                   type="text"
                   placeholder="Company Name"
-                  value={formData.company}
-                  onChange={handleChange}
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
-                {errors.company && (
-                  <span className=" text-red-500 text-sm">{errors.company}</span>
-                )}
               </div>
             </div>
 
@@ -118,13 +91,10 @@ const Footer = ({ title, subtitle, content }) => {
                   name="email"
                   type="email"
                   placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleChange}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
-                {errors.email && (
-                  <span className=" text-red-500 text-sm">{errors.email}</span>
-                )}
               </div>
               <div className="flex flex-col w-full relative">
                 <label className="text-sm mb-1 text-white" htmlFor="phone">Phone</label>
@@ -133,13 +103,10 @@ const Footer = ({ title, subtitle, content }) => {
                   name="phone"
                   type="tel"
                   placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleChange}
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
-                {errors.phone && (
-                  <span className=" text-red-500 text-sm">{errors.phone}</span>
-                )}
               </div>
             </div>
 
@@ -150,8 +117,8 @@ const Footer = ({ title, subtitle, content }) => {
                 <select
                   id="services"
                   name="services"
-                  value={formData.services}
-                  onChange={handleChange}
+                  value={services}
+                  onChange={(e) => setServices(e.target.value)}
                   className="p-3  bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 >
                   <option value="Branding & Design">Branding & Design</option>
@@ -162,9 +129,6 @@ const Footer = ({ title, subtitle, content }) => {
                   <option value="Email Marketing">Email Marketing</option>
                   <option value="Full-Suite Marketing">Full-Suite Marketing</option>
                 </select>
-                {errors.services && (
-                  <span className=" text-red-500 text-sm">{errors.services}</span>
-                )}
               </div>
               <div className="flex flex-col w-full relative">
                 <label className="text-sm mb-1 text-white" htmlFor="budget">Budget</label>
@@ -173,13 +137,10 @@ const Footer = ({ title, subtitle, content }) => {
                   name="budget"
                   type="text"
                   placeholder="Budget"
-                  value={formData.budget}
-                  onChange={handleChange}
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
-                {errors.budget && (
-                  <span className=" text-red-500 text-sm">{errors.budget}</span>
-                )}
               </div>
             </div>
 
@@ -190,8 +151,8 @@ const Footer = ({ title, subtitle, content }) => {
                 id="message"
                 name="message"
                 placeholder="Details of services you require...."
-                value={formData.message}
-                onChange={handleChange}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700 h-24"
               />
             </div>
@@ -202,8 +163,8 @@ const Footer = ({ title, subtitle, content }) => {
             >
               Submit Enquiry
             </button>
+            {status && <p>{status}</p>}
           </form>
-
         </div>
       </div>
     </footer>
