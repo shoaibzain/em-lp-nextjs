@@ -41,21 +41,21 @@ const Footer = ({ title, subtitle, content }) => {
     setMessage('');
   };
   return (
-    <footer id="contact" className="bg-black py-10 px-4 sm:px-0 lg:px-0 text-white">
-      <div className="flex mx-auto w-full container px-4">
+    <footer id="contact" className="bg-black py-10 px-0 text-white">
+      <div className="lg:flex mx-auto w-full container px-4">
         {/* Left Column - Text */}
-        <div className="w-1/2 flex flex-col justify-center px-5 pr-20">
-          <h4 className="text-xl mb-5">{subtitle}</h4>
+        <div className="lg:w-1/2 flex flex-col justify-center px-0 sm:px-5 pb-10 lg:pb-0 lg:pr-20">
+          <div className="text-xl mb-5">{subtitle}</div>
           <h2 className="text-5xl font-bold mb-5">{title}</h2>
-          <p className="text-zinc-600">{content}</p>
+          <p>{content}</p>
         </div>
 
         {/* Right Column - Form */}
-        <div className="w-1/2 px-5 text-gray-500">
+        <div className="lg:w-1/2 px-0 sm:px-5 text-gray-500">
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Row 1 - Name and Company */}
-            <div className="flex gap-4">
+            <div className="flex flex-wrap md:flex-nowrap gap-4">
               <div className="flex flex-col w-full relative">
                 <label className="text-sm mb-1 text-white" htmlFor="name">Name</label>
                 <input
@@ -83,7 +83,7 @@ const Footer = ({ title, subtitle, content }) => {
             </div>
 
             {/* Row 2 - Email and Phone */}
-            <div className="flex gap-4">
+            <div className="flex flex-wrap md:flex-nowrap gap-4">
               <div className="flex flex-col w-full relative">
                 <label className="text-sm mb-1 text-white" htmlFor="email">Email</label>
                 <input
@@ -111,7 +111,7 @@ const Footer = ({ title, subtitle, content }) => {
             </div>
 
             {/* Row 3 - Services and Budget */}
-            <div className="flex gap-4">
+            <div className="flex flex-wrap md:flex-nowrap gap-4">
               <div className="flex flex-col w-full relative">
                 <label className="text-sm mb-1 text-white" htmlFor="services">Services</label>
                 <select

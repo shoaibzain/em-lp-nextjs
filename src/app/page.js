@@ -18,10 +18,10 @@ export default function Home() {
 
             <Affordable />
 
-            <Packages />
+             <Packages />
 
-            <Portfolio />
-            
+           <Portfolio /> 
+
         </main>
     );
 }

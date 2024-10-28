@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import Image from 'next/image';
 import { Open_Sans } from 'next/font/google';
 
@@ -11,11 +11,15 @@ const openSans = Open_Sans({
 });
 
 export default function Affordable() {
-  const [activeSection, setActiveSection] = useState(null);
+  // const [activeSection, setActiveSection] = useState(null);
 
-  const toggleSection = (section) => {
-    setActiveSection(activeSection === section ? null : section);
-  };
+  // const toggleSection = (section) => {
+  //   setActiveSection(activeSection === section ? null : section);
+  // };
+  // ${
+  //   activeSection ? 'w-full' : 'w-2/5'
+  // }
+  // onClick={() => toggleSection('digital-marketing')}
 
   return (
     <section
@@ -25,10 +29,7 @@ export default function Affordable() {
       <div className="container">
         <div className="flex justify-center">
           <div
-            className={`border-2 p-4 rounded-2xl transition-all duration-300 cursor-pointer ${
-              activeSection ? 'w-full' : 'w-2/5'
-            }`}
-            onClick={() => toggleSection('digital-marketing')}
+            className={`border-2 p-4 rounded-2xl transition-all duration-300 cursor-pointer w-2/4 md:w-4/5 lg:w-3/5 xl:w-2/5 `}
           >
             <div className="bg-primary-gradient rounded py-10 text-center">
               <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">

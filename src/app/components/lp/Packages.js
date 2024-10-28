@@ -48,16 +48,16 @@ export default function Packages() {
         <section id="packages" className="packages bg-primary-gradient py-32">
             <div className="flex mx-auto w-full container px-4">
                 <div className="w-full flex flex-col justify-center">
-                    <h2 className="text-9xl tracking-widest	 font-black text-white mb-0 text-center">
+                    <h2 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-black text-white mb-0 text-center">
                         PACKAGES
                     </h2>
                 </div>
             </div>
-            <div className="w-3/4 container mx-auto px-4 -mt-8">
+            <div className="lg:w-3/4 container mx-auto px-4 md:-mt-5 lg:-mt-8">
 
                 {services.map((service) => (
                     <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3    ">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                             {packages
                                 .filter((pkg) => pkg.service === service.id) // Filter packages based on service
                                 .map((pkg, index) => (
@@ -81,7 +81,7 @@ export default function Packages() {
                     </div>
                 ))}
 
-                <div className="flex flex-wrap gap-4 mt-14 justify-center w-10/12 mx-auto">
+                <div className="flex flex-wrap gap-4 mt-14 justify-center lg:w-10/12 mx-auto">
                     {services.map((service) => (
                         <button
                             key={service.id}

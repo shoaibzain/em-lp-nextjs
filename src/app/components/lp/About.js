@@ -47,9 +47,9 @@ export default function About() {
           ))}
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center h-min top-[38%]">
+        <div className="absolute inset-0 flex items-center justify-center h-min top-[32%] xl:top-[38%]">
           <div
-            className={`text-8xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter text-center ${openSans.className}`}
+            className={`text-7xl xl:text-8xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter text-center ${openSans.className}`}
           >
             What We Do
           </div>
