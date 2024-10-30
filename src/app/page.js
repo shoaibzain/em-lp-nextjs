@@ -3,6 +3,7 @@ import Packages from './components/lp/Packages';
 import Affordable from './components/lp/Affordable';
 import About from './components/lp/About';
 import Portfolio from './components/lp/Portfolio';
+import AnimatedSection from './components/lp/AnimatedSection';
 
 export default function Home() {
     return (
@@ -13,14 +14,15 @@ export default function Home() {
                 buttonText="Learn More"
                 backgroundColor="bg-green-600"
             />
-
             <About />
 
-            <Affordable />
+            <AnimatedSection />
 
-             <Packages />
+            {/* <Affordable /> */}
 
-           <Portfolio /> 
+            {/* <Packages /> */}
+
+            <Portfolio />
 
         </main>
     );

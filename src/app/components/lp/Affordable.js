@@ -29,7 +29,7 @@ export default function Affordable() {
       <div className="container">
         <div className="flex justify-center">
           <div
-            className={`border-2 p-4 rounded-2xl transition-all duration-300 cursor-pointer w-2/4 md:w-4/5 lg:w-3/5 xl:w-2/5 `}
+            className={`border-2 p-4 rounded-2xl transition-all duration-300 cursor-pointer w-2/4 md:w-4/5 lg:w-3/5 xl:w-2/5 affordable-box`}
           >
             <div className="bg-primary-gradient rounded py-10 text-center">
               <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
