@@ -23,7 +23,7 @@ export default function AnimatedSection() {
                 scrub: 1,
                 pin: true,
                 trigger: "#affordable-box",
-                start: "20% 50%",
+                start: "50% 50%",
                 endTrigger: "#affordable",
                 end: "bottom 50%",
 
