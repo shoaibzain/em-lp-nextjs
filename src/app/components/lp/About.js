@@ -31,13 +31,13 @@ export default function About() {
     >
       <div className="w-full container px-4">
         <div className="flex w-96 mx-auto gap-12 h-screen relative -top-28">
-          {sections.map(({ id, title }) => (
+        {sections.map(({ id, title }, index) => (
             <div
               key={id}
-              className={`w-24 bg-primary h-2/4 flex items-end justify-end cursor-pointer clip-custom-sharp transition-all duration-300 ${activeSection === id ? 'h-full' : ''}`}
+              className={`w-24 bg-primary h-2/4 flex items-end justify-end cursor-pointer transition-all duration-300 about-sharps relative after:content-[''] after:bg-primary after:h-[100px] after:w-[6.02rem] after:absolute after:left-0 after:clip-about-sharp ${index === 0 ? 'after:-top-8' : index === 1 ? 'after:-top-16' : 'after:-top-24'}  ${activeSection === id ? 'h-full' : ''}`}
               onClick={() => toggleSection(id)}
               aria-expanded={activeSection === id}
-              aria-controls={`${id}-content`}
+              aria-controls={`${id}-content`} 
             >
               <div
                 className="transform rotate-180 writing-mode pt-4 pl-1"
@@ -85,6 +85,7 @@ export default function About() {
           )}
         </div>
       </div>
+      
     </section>
   );
 }

@@ -21,6 +21,7 @@ export default function AnimatedSection() {
         const affordableTl = gsap.timeline({
             scrollTrigger: {
                 scrub: 1,
+                smooth: 2,
                 pin: true,
                 trigger: "#affordable-box",
                 start: "50% 50%",

@@ -10,3 +10,15 @@ html {
 .writing-mode {
   writing-mode: vertical-rl;
 }
+
+@font-face {
+  font-family: 'ThreatExp';
+  src: url('/fonts/Treath.eot'); /* IE9 Compat Modes */
+  src: url('/fonts/Treath.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/Treath.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/Treath.woff2') format('woff2'), /* Modern Browsers */
+       url('/fonts/Treath.ttf') format('truetype'); /* Safari, Android, iOS */
+           font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}

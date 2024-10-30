@@ -10,7 +10,7 @@ export default function Header() {
   const sections = [
     { id: 'hero', name: 'Home' },
     { id: 'whatwedo', name: 'What We Do' },
-    { id: 'packages', name: 'Packages' },
+    { id: 'affordable', name: 'Packages' },
     { id: 'portfolio', name: 'Portfolio' },
     { id: 'contact', name: 'Contact' }
   ];
