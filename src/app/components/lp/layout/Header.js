@@ -36,9 +36,9 @@ export default function Header() {
         </div>
 
         {/* Center: Navigation Menu */}
-        <div className="hidden lg:flex">
+       {/*  <div className="hidden lg:flex">
           <ul className="flex space-x-5 lg:space-x-7 xl:space-x-10 text-lg text-gray-900 font-medium">
-            {sections.map((section) => (
+            {/* {sections.map((section) => (
               <li key={section.id}>
                 <Link
                   href={`#${section.id}`}
@@ -48,9 +48,9 @@ export default function Header() {
                   {section.name}
                 </Link>
               </li>
-            ))}
+            ))} 
           </ul>
-        </div>
+        </div>*/}
 
         {/* Right: Phone Number with Icon */}
         <div className="hidden lg:flex items-center space-x-2 hover:text-primary">

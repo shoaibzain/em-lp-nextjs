@@ -56,10 +56,12 @@ export default function AnimatedSection() {
     }, []); // Empty dependency array ensures this runs once on mount
 
     return (
+        
         <section
             id="affordable"
             className={`affordable bg-black py-32 overflow-hidden relative ${openSans.className}`}
         >
+ 
             <div className="flex justify-center">
                 <div
                     className="transition-all duration-300 cursor-pointer w-2/4 md:w-4/5 lg:w-3/5 xl:w-2/5"

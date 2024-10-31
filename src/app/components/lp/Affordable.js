@@ -82,7 +82,6 @@ export default function Affordable() {
                                     width={86}
                                     height={86}
                                     className="rounded-lg object-cover mx-auto mt-10"
-                                    priority
                                 />
                             </div>
 
