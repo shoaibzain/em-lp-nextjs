@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
 .writing-mode {
   writing-mode: vertical-rl;
 }

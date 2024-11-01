@@ -27,14 +27,14 @@ export default function About() {
   return (
     <section
       id="whatwedo"
-      className="about relative h-screen bg-black bg-contain bg-no-repeat bg-left bg-[url('/images/about-bg.png')]"
+      className="about relative h-screen bg-black bg-contain bg-no-repeat bg-left-top bg-[url('/images/about-bg.png')]"
     >
       <div className="w-full container px-4">
-        <div className="flex w-96 mx-auto gap-12 h-screen relative -top-28">
+        <div className="flex w-80 sm:w-96 mx-auto gap-12 h-screen relative -top-28">
         {sections.map(({ id, title }, index) => (
             <div
               key={id}
-              className={`w-24 bg-primary h-2/4 flex items-end justify-end cursor-pointer transition-all duration-300 about-sharps relative after:content-[''] after:bg-primary after:h-[100px] after:w-[6.02rem] after:absolute after:left-0 after:clip-about-sharp ${index === 0 ? 'after:-top-8' : index === 1 ? 'after:-top-16' : 'after:-top-24'}  ${activeSection === id ? 'h-full' : ''}`}
+              className={`w-24 bg-primary h-2/5 xl:h-2/4 flex items-end justify-end cursor-pointer transition-all duration-300 about-sharps relative after:content-[''] after:bg-primary after:h-[100px] after:w-[4.67rem] sm:after:w-[6.02rem] after:absolute after:left-0 after:clip-about-sharp ${index === 0 ? 'after:-top-8' : index === 1 ? 'after:-top-16' : 'after:-top-24'}  ${activeSection === id ? '!h-2/4 sm:!h-full' : ''}`}
               onClick={() => toggleSection(id)}
               aria-expanded={activeSection === id}
               aria-controls={`${id}-content`} 
@@ -47,24 +47,24 @@ export default function About() {
           ))}
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center h-min top-[32%] xl:top-[38%]">
+        <div className="absolute inset-0 flex items-center justify-center h-min top-[38%] sm:top-[34%] lg:top-[38%]">
           <div
-            className={`text-7xl xl:text-8xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter text-center ${openSans.className}`}
+            className={`text-5xl sm:text-7xl xl:text-8xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter text-center ${openSans.className}`}
           >
             What We Do
           </div>
         </div>
 
-        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 text-white text-left">
+        <div className="absolute bottom-24 left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 text-white text-left">
           {activeSection === 'digital-marketing' && (
-            <div id="digital-marketing-content" className="relative w-80 left-20">
+            <div id="digital-marketing-content" className="relative p-7 sm:p-0 sm:w-80 sm:left-20">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
               </p>
             </div>
           )}
           {activeSection === 'seo' && (
-            <div id="seo-content" className="relative left-[14rem] w-80">
+            <div id="seo-content" className="relative p-7 sm:p-0 sm:left-[14rem] sm:w-80">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
               </p>
@@ -74,7 +74,7 @@ export default function About() {
             </div>
           )}
           {activeSection === 'web-design' && (
-            <div id="web-design-content" className="relative -left-20 w-80">
+            <div id="web-design-content" className="relative p-7 sm:p-0 sm:-left-20 sm:w-80">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
               </p>

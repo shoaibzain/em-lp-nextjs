@@ -26,9 +26,9 @@ const Footer = ({ title, subtitle, content }) => {
 
     const data = await response.json();
     if (data.success) {
-      setStatus('Message sent successfully!');
+      setStatus({ message: 'Message sent successfully!', isError: false });
     } else {
-      setStatus('Error sending message. Please try again.');
+      setStatus({ message: 'Please fill all required fields. Please try again.', isError: true });
     }
 
     // Reset the form
@@ -65,6 +65,7 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required 
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
               </div>
@@ -93,6 +94,7 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required 
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
               </div>
@@ -105,6 +107,7 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required 
                   className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 />
               </div>
@@ -119,6 +122,7 @@ const Footer = ({ title, subtitle, content }) => {
                   name="services"
                   value={services}
                   onChange={(e) => setServices(e.target.value)}
+                  required 
                   className="p-3  bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
                 >
                   <option value="Branding & Design">Branding & Design</option>
@@ -156,14 +160,18 @@ const Footer = ({ title, subtitle, content }) => {
                 className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700 h-24"
               />
             </div>
-
+            {status && (
+              <p className={status.isError ? 'text-red-700' : 'text-green-700'}>
+                {status.message}
+              </p>
+            )}
             <button
               type="submit"
               className="bg-transparent hover:bg-transparent text-white py-2 px-4 underline text-left w-40 hover:text-pink-700 transition-colors"
             >
               Submit Enquiry
             </button>
-            {status && <p>{status}</p>}
+
           </form>
         </div>
       </div>

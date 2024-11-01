@@ -1,122 +1,175 @@
-"use client"
-import React, { useEffect } from 'react';
+"use client";
+
+import { useEffect } from 'react';
 import Image from 'next/image';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Portfolio() {
     useEffect(() => {
-        // Animate each image separately
-        const images = [
-          { id: "#left-image-1", x: -100, y: 0, rotation: -10 },
-          { id: "#left-image-2", x: -200, y: -30, rotation: -20 },
-          { id: "#left-image-3", x: -200, y: -100, rotation: -15 },
-          { id: "#right-image-1", x: 100, y: 0, rotation: 10 },
-          { id: "#right-image-2", x: 80, y: -30, rotation: 20 },
-          { id: "#right-image-3", x: 120, y: -100, rotation: 15 },
-        ];
-    
-        images.forEach(({ id, x, y, rotation }) => {
-          gsap.to(id, {
-            scrollTrigger: {
-              trigger: id,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
+        const isIpad = window.innerWidth <= 1024 && window.innerWidth > 767; // iPad check
+        const isMobile = window.innerWidth <= 767; // Mobile check
+
+        // Define the transform values based on the device type
+        const transformValues = [
+            {
+                id: "#image1",
+                transform: isIpad
+                    ? "translate3d(-356px, 0px, 0px)" // iPad transform
+                    : isMobile
+                        ? "translate3d(175.5px, 0px, 0px)" // Mobile transform
+                        : "translate(-714.4px, 221px) rotate(-45deg)", // Desktop transform
             },
-            x,
-            y,
-            rotation,
-          });
-        });
-    
-        // Fade-in animation for #center_content
-        gsap.to("#center_content", {
-          scrollTrigger: {
-            trigger: "#left-image-2",
-            start: "top center", // Adjust based on when you want the fade to start
-            end: "top top",
-            scrub: 1,
-          },
-          opacity: 1, // Fade in effect
-          duration: 3,
-        });
-      }, []);
-    
-    
+            {
+                id: "#image2",
+                transform: isIpad
+                    ? "translate3d(356px, 0px, 0px)"
+                    : isMobile
+                        ? "translate3d(300px, 150px, 0px)"
+                        : "translate(714.4px, 221px) rotate(45deg)",
+            },
+            {
+                id: "#image3",
+                transform: isIpad
+                    ? "translate3d(-668px, 0px, 0px)"
+                    : isMobile
+                        ? "translate3d(-292.093px, 0px, 0px)"
+                        : "translate(-701.6px, -100px) rotate(-35deg)",
+            },
+            {
+                id: "#image4",
+                transform: isIpad
+                    ? "translate3d(668px, 0px, 0px)"
+                    : isMobile
+                        ? "translate3d(265.474px, 0px, 0px)"
+                        : "translate(701.6px, -100px) rotate(35deg)",
+            },
+            {
+                id: "#image5",
+                transform: isIpad
+                    ? "translate3d(-356px, 0px, 0px)"
+                    : isMobile
+                        ? "translate3d(-100px, -150px, 0px)"
+                        : "translate(-230.4px, -262.6px) rotate(-30deg)",
+            },
+            {
+                id: "#image6",
+                transform: isIpad
+                    ? "translate3d(356px, 0px, 0px)"
+                    : isMobile
+                        ? "translate(-175.5px, 0px)"
+                        : "translate(230.4px, -262.6px) rotate(30deg)",
+            },
+        ];
 
+        // Loop through the transform values and create animations
+        transformValues.forEach(({ id, transform }) => {
+            gsap.to(id, {
+                scrollTrigger: {
+                    trigger: "#portfolio",
+                    start: "top 50%",
+                    end: "bottom top",
+                    scrub: true,
+                },
+                transform: transform,
+                duration: 1.5,
+            });
+        });
+
+        // Animation for #textportfolio
+        gsap.to("#textportfolio", {
+            scrollTrigger: {
+                trigger: "#portfolio",
+                start: "top 0px",
+                end: "15% top",
+                scrub: true,
+            },
+            opacity: 1,
+            duration: 1.5,
+        });
+        gsap.to("#btnportfolio", {
+            scrollTrigger: {
+                trigger: "#portfolio",
+                start: "top 0%",
+                end: "20% top",
+                scrub: true,
+            },
+            transform: "translate(0px, 0px)",
+            duration: 1.5,
+        });
+    }, []);
     return (
-        <div id="portfolio" className="flex min-h-screen flex-col items-center justify-center bg-black py-32 overflow-hidden">
-            <div className="flex w-full">
-                {/* Left showcase images */}
-                <div className="w-2/4">
-                    <Image
-                        id="left-image-1"
-                        src="/images/por-2.jpg"
-                        alt="Left showcase image"
-                        width={600}
-                        height={1000}
-                        className="rounded-2xl object-cover -z-1"
-                    />
-                    <Image
-                        id="left-image-2"
-                        src="/images/por-3.jpg"
-                        alt="Left showcase image"
-                        width={600}
-                        height={1000}
-                        className="rounded-2xl object-cover"
-                    />
-                    <Image
-                        id="left-image-3"
-                        src="/images/por-5.jpg"
-                        alt="Left showcase image"
-                        width={600}
-                        height={1000}
-                        className="rounded-2xl object-cover z-10"
-                    />
+        <section id="portfolio" className="relative w-full text-center pt-20 sm:pt-36 overflow-hidden">
+            <div className="px-6 sm:px-12 xl:px-20">
+                <div className="absolute z-10 w-full left-2/4 top-2/4 pt-32 xl:pt-0 xl:pb-56 transform translate-x-[-50%] translate-y-[-50%]">
+                    <div id="textportfolio" className="relative inline-block m-auto float-none z-10 opacity-0">
+                        <div className="mb-6 leading-tight text-white text-2xl ">
+                            Like a lion&apos;s roar <br />echoing through the<br /> jungle, a hint of our <br /> creativeminds emerges.
+                        </div>
+                        <button id="btnportfolio" className="translate-y-12 group inline-flex items-center rounded-full bg-primary px-4 py-2 text-base font-semibold text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700">
+                            See full Portfolio
+                        </button>
+                    </div>
                 </div>
-
-                {/* Right showcase images */}
-                <div className="w-2/4 flex flex-wrap justify-end">
-                    <Image
-                        id="right-image-1"
-                        src="/images/por-1.jpg"
-                        alt="Right showcase image"
-                        width={600}
-                        height={1000}
-                        className="rounded-2xl object-cover -z-1"
-                    />
-                    <Image
-                        id="right-image-2"
-                        src="/images/por-4.jpg"
-                        alt="Right showcase image"
-                        width={600}
-                        height={1000}
-                        className="rounded-2xl object-cover"
-                    />
-                    <Image
-                        id="right-image-3"
-                        src="/images/por-6.jpg"
-                        alt="Right showcase image"
-                        width={600}
-                        height={1000}
-                        className="rounded-2xl object-cover z-10"
-                    />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-y-10 xl:gap-y-0 gap-x-10 relative w-full">
+                    <div id="image1" className="overflow-hidden rounded-3xl will-change-transform">
+                        <Image
+                            src="/images/por-2.jpg"
+                            alt="First showcase image"
+                            width={600}
+                            height={448}
+                            className="w-full"
+                        />
+                    </div>
+                    <div id="image2" className="overflow-hidden rounded-3xl will-change-transform hidden sm:block">
+                        <Image
+                            src="/images/por-1.jpg"
+                            alt="Second showcase image"
+                            width={600}
+                            height={448}
+                            className="w-full"
+                        />
+                    </div>
+                    <div id="image3" className="overflow-hidden rounded-3xl will-change-transform -left-2/4 relative sm:static">
+                        <Image
+                            src="/images/por-3.jpg"
+                            alt="Left showcase image"
+                            width={600}
+                            height={448}
+                            className="w-full"
+                        />
+                    </div>
+                    <div id="image4" className="overflow-hidden rounded-3xl will-change-transform -right-2/4 relative sm:static">
+                        <Image
+                            src="/images/por-4.jpg"
+                            alt="Left showcase image"
+                            width={600}
+                            height={448}
+                            className="w-full"
+                        />
+                    </div>
+                    <div id="image5" className="overflow-hidden rounded-3xl will-change-transform hidden sm:block">
+                        <Image
+                            src="/images/por-5.jpg"
+                            alt="Left showcase image"
+                            width={600}
+                            height={448}
+                            className="w-full"
+                        />
+                    </div>
+                    <div id="image6" className="overflow-hidden rounded-3xl will-change-transform	">
+                        <Image
+                            src="/images/por-6.jpg"
+                            alt="Left showcase image"
+                            width={600}
+                            height={448}
+                            className="w-full"
+                        />
+                    </div>
                 </div>
             </div>
-            <div id="center_content" className="absolute opacity-0">
-                <div className="flex flex-col items-center justify-center text-center">
-                    <h2 className="mb-6 text-base leading-tight text-white sm:text-base md:text-base">
-                        Like a lion&apos;s roar echoing through <br /> the jungle, a hint of our creative<br /> minds emerges.
-                    </h2>
-                    <button className="group inline-flex items-center rounded-full bg-primary px-4 py-2 text-base font-semibold text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700">
-                        See full Portfolio
-
-                    </button>
-                </div>
-            </div>
-        </div>
+        </section>
     );
 }

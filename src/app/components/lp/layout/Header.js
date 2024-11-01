@@ -20,8 +20,8 @@ export default function Header() {
   };
 
   return (
-    <header className="z-10 shadow-md py-4 top-0 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10">
-      <nav className="w-full container px-4 flex justify-between items-center">
+    <header className="py-4">
+      <nav className="w-full sm:w-4/5 mx-auto px-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center">
           <Link href="/">
@@ -53,7 +53,7 @@ export default function Header() {
         </div>*/}
 
         {/* Right: Phone Number with Icon */}
-        <div className="hidden lg:flex items-center space-x-2 hover:text-primary">
+        <div className="flex items-center space-x-2 hover:text-primary">
           <FiPhone className="text-gray-900" size={20} />
           <Link href="tel:+1234567890" className="text-primary font-bold text-xl">
             +1 (234) 567-890
@@ -61,7 +61,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center">
+        <div className="hidden flex items-center">
           <button
             onClick={toggleMenu}
             aria-expanded={menuOpen}
