@@ -45,14 +45,7 @@ export default function Packages() {
     ];
 
     return (
-        <div id="packages" className="packages" style={{
-            transform: "scale(0, 0)",
-            opacity: 1,
-            visibility: "hidden",
-            position: "absolute",
-            left: 0,
-            bottom: '3rem'
-        }}>
+        <div>
             <div className="flex mx-auto w-full container px-4">
                 <div className="w-full flex flex-col justify-center">
                     <h2 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-black text-white mb-0 text-center">

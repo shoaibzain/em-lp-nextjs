@@ -1,4 +1,6 @@
 "use client";
+import { useEffect } from 'react';
+
 export default function Hero() {
   return (
     <section id="hero" className="hero h-screen flex items-center relative overflow-hidden">
