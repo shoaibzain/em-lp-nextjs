@@ -7,6 +7,10 @@
   writing-mode: vertical-rl;
 }
 
+div#chakra-content {
+  transform-origin: center 63%;
+}
+
 .flare {
   position: fixed;
   border: 2px solid #e21468;

@@ -40,9 +40,15 @@ export default function Affordable() {
             duration: 1.5,
         });
 
+        // Define the animations for the timeline
+        tl.to("#chakra-content", {
+            transform: "translate(0px, 1px) scale(7)",
+            duration: 10,
+        });
+
         tl.to("#packages", {
             visibility: "inherit",
-            transform: "scale(0.9)",
+            transform: "scale(0.95)",
             duration: 1.5,
         }, ">");
 
@@ -60,18 +66,40 @@ export default function Affordable() {
                         id="packages"
                         className="absolute z-20 flex items-center flex-col gap-14 w-full left-0 bottom-0 h-full justify-center"
                     >
-                       <Packages/>
+                        <Packages />
                     </div>
                     <div className="mt-10 flex items-center justify-center">
-                        <Image
-                            id="chakra-image"
+                        <div id="chakra-image" className={` w-full md:w-4/5 lg:w-3/5 xl:w-2/5 border-2 p-4 rounded-2xl ${openSans.className}`}>
+                            <div className="bg-primary-gradient rounded py-2 sm:py-10 text-center origin-center">
+                                <div id="chakra-content" >
+                                    <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
+                                        Big Ideas
+                                    </div>
+                                    <div className="text-4xl md:text-6xl font-extrabold uppercase text-white tracking-tighter">
+                                        Affordable
+                                    </div>
+                                    <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
+                                        Prices !
+                                    </div>
+                                    <Image
+                                        src="/images/hand.png"
+                                        alt="Right showcase image"
+                                        width={86}
+                                        height={86}
+                                        className="rounded-lg object-cover mx-auto mt-4 sm:mt-10"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        {/* <Image
+                            
                             src="/images/affordable.png"
                             alt="First showcase image"
                             width={1400}
                             height={1021}
                             className="origin-center z-10"
                             style={{ width: '908px', height: '614px' }}
-                        />
+                        /> */}
                     </div>
                 </div>
             </div>
