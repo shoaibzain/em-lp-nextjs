@@ -5,7 +5,7 @@ import Portfolio from './components/lp/Portfolio';
 
 export default function Home() {
     return (
-        <main className="bg-black">
+        <main className="bg-black overflow-hidden">
             <Hero
                 title="Welcome to Our Landing Page!"
                 content="We offer the best solutions for your needs."

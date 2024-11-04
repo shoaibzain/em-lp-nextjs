@@ -101,7 +101,7 @@ export default function Portfolio() {
         });
     }, []);
     return (
-        <section id="portfolio" className="relative w-full text-center pt-20 sm:pt-36 overflow-hidden">
+        <section id="portfolio" className="relative w-full text-center pt-20 sm:pt-36 overflow-hidden bg-black">
             <div className="px-6 sm:px-12 xl:px-20">
                 <div className="absolute z-10 w-full left-2/4 top-2/4 pt-32 xl:pt-0 xl:pb-56 transform translate-x-[-50%] translate-y-[-50%]">
                     <div id="textportfolio" className="relative inline-block m-auto float-none z-10 opacity-0">

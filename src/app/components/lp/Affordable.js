@@ -30,7 +30,13 @@ export default function Affordable() {
                 start: "top top",
                 end: "+=500",
                 pin: true,
-                scrub: true,
+                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+                snap: {
+                    snapTo: 'labels', // snap to the closest label in the timeline
+                    duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+                    delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+                   ease: "expoScale(0.5, 3, power2.inOut)"
+                }
             },
         });
 
@@ -42,14 +48,16 @@ export default function Affordable() {
 
         // Define the animations for the timeline
         tl.to("#chakra-content", {
-            transform: "translate(0px, 1px) scale(7)",
+            transform: "translate(0px, 1px) scale(3)",
+            opacity: 0,
             duration: 10,
         });
 
         tl.to("#packages", {
             visibility: "inherit",
             transform: "scale(0.95)",
-            duration: 1.5,
+            duration: 15,
+            ease: "expoScale(0.5, 3, power2.inOut)"
         }, ">");
 
         return () => {
@@ -70,7 +78,7 @@ export default function Affordable() {
                     </div>
                     <div className="mt-10 flex items-center justify-center">
                         <div id="chakra-image" className={` w-full md:w-4/5 lg:w-3/5 xl:w-2/5 border-2 p-4 rounded-2xl ${openSans.className}`}>
-                            <div className="bg-primary-gradient rounded py-2 sm:py-10 text-center origin-center">
+                            <div className="bg-primary-gradient rounded py-48 sm:py-10 text-center !origin-top sm:origin-center">
                                 <div id="chakra-content" >
                                     <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
                                         Big Ideas
@@ -91,15 +99,6 @@ export default function Affordable() {
                                 </div>
                             </div>
                         </div>
-                        {/* <Image
-                            
-                            src="/images/affordable.png"
-                            alt="First showcase image"
-                            width={1400}
-                            height={1021}
-                            className="origin-center z-10"
-                            style={{ width: '908px', height: '614px' }}
-                        /> */}
                     </div>
                 </div>
             </div>
