@@ -40,7 +40,7 @@ function CustomCursor() {
   // Render the custom cursor element with dynamic styles based on cursor state.
   return (
     <div
-      className={`flare ${isPointer ? "pointer" : ""}`}
+      className={`hidden sm:block flare ${isPointer ? "pointer" : ""}`}
       style={{
         ...cursorStyle,
         left: `${position.x}px`,
