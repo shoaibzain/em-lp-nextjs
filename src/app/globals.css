@@ -7,14 +7,32 @@
   writing-mode: vertical-rl;
 }
 
-@font-face {
-  font-family: 'ThreatExp';
-  src: url('/fonts/Treath.eot'); /* IE9 Compat Modes */
-  src: url('/fonts/Treath.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/Treath.woff') format('woff'), /* Modern Browsers */
-       url('/fonts/Treath.woff2') format('woff2'), /* Modern Browsers */
-       url('/fonts/Treath.ttf') format('truetype'); /* Safari, Android, iOS */
-           font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+.flare {
+  position: fixed;
+  border: 2px solid #e21468;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999999 !important ;
+  backdrop-filter: blur(1px);
+  background-color: transparent;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  cursor: none !important; /* Let's hide the default cursor so it looks way better */
+  mixblendmode: "difference";
+}
+
+/* We need to remove this custom cursor in mobile devices */
+@media screen and (max-width: 768px) {
+  .flare {
+    width: 0;
+    height: 0;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
+  }
+}
+.flare.pointer {
+  opacity: 0 !important;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
 }

@@ -2,6 +2,7 @@ import Header from './components/lp/layout/Header';
 import Footer from './components/lp/layout/Footer';
 import { Montserrat } from 'next/font/google';
 import "./globals.css";
+import CustomCursor from './components/lp/layout/CustomCursor';
 
 export const metadata = {
     title: 'Express Marketing',
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
                 <Header />
 
                 {children}
-
+                <CustomCursor  />
                 <Footer
                     title="Let's Collaborate!"
                     subtitle="Grow Your Business with Us!"
