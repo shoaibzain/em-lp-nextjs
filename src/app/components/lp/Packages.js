@@ -47,36 +47,34 @@ export default function Packages() {
     return (
         <div>
             <div className="lg:w-3/4 mx-auto px-4 md:-mt-5 lg:-mt-8">
-                <h2 className="text-5xl md:text-7xl lg:text-9xl -mb-6 tracking-widest font-black text-white mb-0 text-center">
+                <h2 className="text-5xl md:text-7xl lg:text-9xl -mb-6 tracking-widest font-black text-white text-center">
                     PACKAGES
                 </h2>
                 {services.map((service) => (
-        <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}>
-            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {packages
-                    .filter((pkg) => pkg.service === service.id)
-                    .map((pkg, index) => (
-                        <div key={index} className="min-w-[80%] md:min-w-0 bg-slate-50/20 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between snap-start mx-3">
-                            <div className="w-full">
-                                <h3 className="text-4xl font-bold mb-2">{pkg.name}</h3>
-                                <p className="text-6xl font-thin mb-2">
-                                    <span>{pkg.price}</span> <sup className="text-3xl font-bold -top-6">AED</sup>
-                                </p>
-                                <p className="mb-4 font-semibold">AED Billed Monthly</p>
-                                <p className="mb-0 font-semibold">Platforms:</p>
-                                <p className="mb-4">{pkg.platforms}</p>
-                                <p className="text-lg mb-4 font-semibold">{pkg.package}</p>
-                            </div>
-                            <div className="text-center w-full mt-5">
-                                <button className="group rounded-full bg-primary px-2 py-1 text-base font-semibold text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:ring-0 focus:bg-neutral-700 focus:ring-offset-2 focus:ring-offset-neutral-700">
-                                    Get Started
-                                </button>
-                            </div>
+                    <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}>
+                        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            {packages
+                                .filter((pkg) => pkg.service === service.id) // Filter packages based on service
+                                .map((pkg, index) => (
+                                    <div key={index} className="bg-slate-50/20 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between">
+                                        <div className="w-full">
+                                            <h3 className="text-4xl font-bold mb-2">{pkg.name}</h3>
+                                            <p className="text-6xl font-thin mb-2"><span>{pkg.price}</span> <sup className="text-3xl font-bold -top-6">AED</sup></p>
+                                            <p className="mb-4 font-semibold">AED Billed Monthly</p>
+                                            <p className="mb-0 font-semibold">Platforms:</p>
+                                            <p className="mb-4">{pkg.platforms}</p>
+                                            <p className="text-lg mb-4 font-semibold">{pkg.package}</p>
+                                        </div>
+                                        <div className="text-center w-full mt-5">
+                                            <button className="group rounded-full bg-primary px-2 py-1 text-base font-semibold text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:ring-0 focus:bg-neutral-700 focus:ring-offset-2 focus:ring-offset-neutral-700">
+                                                Get Started
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
                         </div>
-                    ))}
-            </div>
-        </div>
-    ))}
+                    </div>
+                ))}
 
                 <div className="flex flex-wrap gap-4 mt-14 justify-center lg:w-10/12 mx-auto">
                     {services.map((service) => (

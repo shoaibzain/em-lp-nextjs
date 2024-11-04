@@ -67,7 +67,7 @@ export default function Affordable() {
     }, []);
 
     return (
-        <section id="affordable" className="affordable overflow-hidden relative">
+        <section id="affordable" className="affordable z-0 relative">
             <div id="how-much-does-it-cost" className="h-screen flex justify-center relative bg-black z-10">
                 <div className=" w-full container">
                     <div
