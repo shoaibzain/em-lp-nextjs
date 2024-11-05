@@ -45,18 +45,18 @@ export default function Packages() {
     ];
 
     return (
-        <div>
-            <div className="lg:w-3/4 mx-auto px-4 md:-mt-5 lg:-mt-8">
-                <h2 className="text-5xl md:text-7xl lg:text-9xl -mb-6 tracking-widest font-black text-white text-center">
+        <div className="w-full box-content">
+            <div className="lg:w-3/4 mx-auto sm:px-4 md:-mt-5 lg:-mt-8">
+                <h2 className="text-5xl md:text-7xl lg:text-9xl mb-2 sm:-mb-6 tracking-widest font-black text-white text-center">
                     PACKAGES
                 </h2>
                 {services.map((service) => (
-                    <div key={service.id} className={activeTab === service.id ? "block" : "hidden"}>
-                        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div key={service.id} className={activeTab === service.id ? "block" : "hidden"} >
+                        <div className="webkit-box sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3 overflow-auto box-content">
                             {packages
                                 .filter((pkg) => pkg.service === service.id) // Filter packages based on service
                                 .map((pkg, index) => (
-                                    <div key={index} className="bg-slate-50/20 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between">
+                                    <div key={index} className="w-80 sm:w-auto bg-slate-50/20 backdrop-blur-lg text-white rounded-3xl border-2 py-3 px-4 flex flex-wrap content-between">
                                         <div className="w-full">
                                             <h3 className="text-4xl font-bold mb-2">{pkg.name}</h3>
                                             <p className="text-6xl font-thin mb-2"><span>{pkg.price}</span> <sup className="text-3xl font-bold -top-6">AED</sup></p>
@@ -80,7 +80,7 @@ export default function Packages() {
                     {services.map((service) => (
                         <button
                             key={service.id}
-                            className={`transition ease-in-out delay-150 px-2 py-1 rounded-xl border-2 text-lg duration-300 ${activeTab === service.id ? "bg-white" : "bg-transparent text-white hover:bg-white  hover:text-black"
+                            className={`transition ease-in-out delay-150 px-2 py-1 rounded-xl border-2 text-xs sm:text-lg duration-300 ${activeTab === service.id ? "bg-white" : "bg-transparent text-white hover:bg-white  hover:text-black"
                                 }`}
                             onClick={() => setActiveTab(service.id)}
                         >

@@ -47,6 +47,9 @@ module.exports = {
         '.clip-about-sharp': {
           clipPath: 'polygon(0 24%, 100% 0, 100% 100%, 0 100%)',
         },
+        '.webkit-box': {
+          display: '-webkit-box',
+        },
       };
 
       addUtilities(newUtilities, ['responsive', 'hover']);
