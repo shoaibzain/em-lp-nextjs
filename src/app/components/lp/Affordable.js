@@ -30,12 +30,11 @@ export default function Affordable() {
                 start: "top top",
                 end: "+=500",
                 pin: true,
-                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+                scrub: 2, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
                 snap: {
                     snapTo: 'labels', // snap to the closest label in the timeline
-                    duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-                    delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
-                   ease: "expoScale(0.5, 3, power2.inOut)"
+                    duration:1.5, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+                    delay: 0.2
                 }
             },
         });
@@ -43,21 +42,20 @@ export default function Affordable() {
         // Define the animations for the timeline
         tl.to("#chakra-image", {
             transform: "translate(0px, 1px) scale(5)",
-            duration: 1.5,
+            duration: 1.5
         });
 
         // Define the animations for the timeline
         tl.to("#chakra-content", {
             transform: "translate(0px, 1px) scale(3)",
             opacity: 0,
-            duration: 10,
+            duration: 10
         });
 
         tl.to("#packages", {
             visibility: "inherit",
             transform: "scale(0.95)",
-            duration: 15,
-            ease: "expoScale(0.5, 3, power2.inOut)"
+            duration: 15
         }, ">");
 
         return () => {
