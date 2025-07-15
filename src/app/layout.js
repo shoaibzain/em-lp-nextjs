@@ -4,8 +4,8 @@ import { Montserrat } from 'next/font/google';
 import "./globals.css";
 
 export const metadata = {
-    title: 'Express Marketing',
-    description: 'A simple landing page built with Next.js',
+    title: 'G12 Digital - Landing Page',
+    description: 'G12 Digital - Landing Page',
 };
 
 // Configure Montserrat font
