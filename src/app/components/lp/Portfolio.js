@@ -9,76 +9,133 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Portfolio() {
     useEffect(() => {
-        const isIpad = window.innerWidth <= 1024 && window.innerWidth > 767; // iPad check
-        const isMobile = window.innerWidth <= 767; // Mobile check
+        // Create a matchMedia instance
+        const mm = gsap.matchMedia();
 
-        // Define the transform values based on the device type
-        const transformValues = [
-            {
-                id: "#image1",
-                transform: isIpad
-                    ? "translate3d(-356px, 0px, 0px)" // iPad transform
-                    : isMobile
-                        ? "translate3d(175.5px, 0px, 0px)" // Mobile transform
-                        : "translate(-714.4px, 221px) rotate(-45deg)", // Desktop transform
-            },
-            {
-                id: "#image2",
-                transform: isIpad
-                    ? "translate3d(356px, 0px, 0px)"
-                    : isMobile
-                        ? "translate3d(300px, 150px, 0px)"
-                        : "translate(714.4px, 221px) rotate(45deg)",
-            },
-            {
-                id: "#image3",
-                transform: isIpad
-                    ? "translate3d(-668px, 0px, 0px)"
-                    : isMobile
-                        ? "translate3d(-292.093px, 0px, 0px)"
-                        : "translate(-701.6px, -100px) rotate(-35deg)",
-            },
-            {
-                id: "#image4",
-                transform: isIpad
-                    ? "translate3d(668px, 0px, 0px)"
-                    : isMobile
-                        ? "translate3d(265.474px, 0px, 0px)"
-                        : "translate(701.6px, -100px) rotate(35deg)",
-            },
-            {
-                id: "#image5",
-                transform: isIpad
-                    ? "translate3d(-356px, 0px, 0px)"
-                    : isMobile
-                        ? "translate3d(-100px, -150px, 0px)"
-                        : "translate(-230.4px, -262.6px) rotate(-30deg)",
-            },
-            {
-                id: "#image6",
-                transform: isIpad
-                    ? "translate3d(356px, 0px, 0px)"
-                    : isMobile
-                        ? "translate(-175.5px, 0px)"
-                        : "translate(230.4px, -262.6px) rotate(30deg)",
-            },
-        ];
-
-        // Loop through the transform values and create animations
-        transformValues.forEach(({ id, transform }) => {
-            gsap.to(id, {
-                scrollTrigger: {
-                    trigger: "#portfolio",
-                    start: "top 50%",
-                    end: "bottom top",
-                    scrub: true,
+        // Desktop animations (default)
+        mm.add("(min-width: 1024px)", () => {
+            // Define the transform values for desktop
+            const transformValues = [
+                {
+                    id: "#image1",
+                    transform: "translate(-714.4px, 221px) rotate(-45deg)",
                 },
-                transform: transform,
-                duration: 1.5,
+                {
+                    id: "#image2",
+                    transform: "translate(714.4px, 221px) rotate(45deg)",
+                },
+                {
+                    id: "#image3",
+                    transform: "translate(-701.6px, -100px) rotate(-35deg)",
+                },
+                {
+                    id: "#image4",
+                    transform: "translate(701.6px, -100px) rotate(35deg)",
+                },
+                {
+                    id: "#image5",
+                    transform: "translate(-230.4px, -262.6px) rotate(-30deg)",
+                },
+                {
+                    id: "#image6",
+                    transform: "translate(230.4px, -262.6px) rotate(30deg)",
+                },
+            ];
+
+            // Apply desktop animations
+            transformValues.forEach(({ id, transform }) => {
+                gsap.to(id, {
+                    scrollTrigger: {
+                        trigger: "#portfolio",
+                        start: "top 50%",
+                        end: "bottom top",
+                        scrub: true,
+                    },
+                    transform,
+                    duration: 1.5,
+                });
             });
         });
 
-        // Animation for #textportfolio
+        // Tablet animations
+        mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+            const transformValues = [
+                {
+                    id: "#image1",
+                    transform: "translate3d(-356px, 0px, 0px)",
+                },
+                {
+                    id: "#image2",
+                    transform: "translate3d(356px, 0px, 0px)",
+                },
+                {
+                    id: "#image3",
+                    transform: "translate3d(-668px, 0px, 0px)",
+                },
+                {
+                    id: "#image4",
+                    transform: "translate3d(668px, 0px, 0px)",
+                },
+                {
+                    id: "#image5",
+                    transform: "translate3d(-356px, 0px, 0px)",
+                },
+                {
+                    id: "#image6",
+                    transform: "translate3d(356px, 0px, 0px)",
+                },
+            ];
+
+            transformValues.forEach(({ id, transform }) => {
+                gsap.to(id, {
+                    scrollTrigger: {
+                        trigger: "#portfolio",
+                        start: "top 50%",
+                        end: "bottom top",
+                        scrub: true,
+                    },
+                    transform,
+                    duration: 1.5,
+                });
+            });
+        });
+
+        // Mobile animations
+        mm.add("(max-width: 767px)", () => {
+            const transformValues = [
+                {
+                    id: "#image1",
+                    transform: "translate3d(175.5px, 0px, 0px)",
+                },
+                {
+                    id: "#image3",
+                    transform: "translate3d(-292.093px, 0px, 0px)",
+                },
+                {
+                    id: "#image4",
+                    transform: "translate3d(265.474px, 0px, 0px)",
+                },
+                {
+                    id: "#image6",
+                    transform: "translate(-175.5px, 0px)",
+                },
+            ];
+
+            transformValues.forEach(({ id, transform }) => {
+                gsap.to(id, {
+                    scrollTrigger: {
+                        trigger: "#portfolio",
+                        start: "top 50%",
+                        end: "bottom top",
+                        scrub: true,
+                    },
+                    transform,
+                    duration: 1.5,
+                });
+            });
+        });
+
+        // Text and button animations (common for all devices)
         gsap.to("#textportfolio", {
             scrollTrigger: {
                 trigger: "#portfolio",
@@ -89,6 +146,7 @@ export default function Portfolio() {
             opacity: 1,
             duration: 1.5,
         });
+
         gsap.to("#btnportfolio", {
             scrollTrigger: {
                 trigger: "#portfolio",
@@ -99,7 +157,13 @@ export default function Portfolio() {
             transform: "translate(0px, 0px)",
             duration: 1.5,
         });
+
+        return () => {
+            // Cleanup
+            mm.revert();
+        };
     }, []);
+
     return (
         <section id="portfolio" className="relative w-full text-center pt-20 sm:pt-36 overflow-hidden bg-black">
             <div className="px-6 sm:px-12 xl:px-20">
@@ -120,7 +184,10 @@ export default function Portfolio() {
                             alt="First showcase image"
                             width={600}
                             height={448}
-                            className="w-full"
+                            className="w-full transition-opacity duration-300"
+                            loading="lazy"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg=="
                         />
                     </div>
                     <div id="image2" className="overflow-hidden rounded-3xl will-change-transform hidden sm:block">
@@ -129,7 +196,10 @@ export default function Portfolio() {
                             alt="Second showcase image"
                             width={600}
                             height={448}
-                            className="w-full"
+                            className="w-full transition-opacity duration-300"
+                            loading="lazy"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg=="
                         />
                     </div>
                     <div id="image3" className="overflow-hidden rounded-3xl will-change-transform -left-2/4 relative sm:static">

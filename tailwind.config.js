@@ -8,16 +8,16 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'primary-gradient': 'linear-gradient(-151deg, rgba(226, 20, 104, 1) 0%, rgba(105, 5, 46, 1) 93%)',
+        'primary-gradient': 'linear-gradient(-151deg, #bc8e41 0%, #014a59 93%)',
       },
       container: {
         center: true,
         padding: "15px",
       },
       colors: {
-        primary: "#e21468",
-        secondary: "#000000",
-        accent: "#e21468",
+        primary: "#014a59",
+        secondary: "#d5a457",
+        accent: "#014a59",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

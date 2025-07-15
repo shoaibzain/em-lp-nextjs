@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <header className="py-4">
+    <header className="py-3">
       <nav className="w-full sm:w-4/5 mx-auto px-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center">
@@ -28,7 +28,7 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="Express Marketing"
-              width={150}
+              width={120}
               height={42}
               priority
             />

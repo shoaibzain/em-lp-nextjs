@@ -11,9 +11,11 @@ export default function Hero() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         aria-hidden="true"
-        preload="none"
+        preload="auto"
+        poster="/images/hero-bg2.jpg"
       >
-        <source src="/videos/hero-background.webm" type="video/mp4" />
+        <source src="/videos/hero-background.webm" type="video/webm" />
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 z-1"></div>

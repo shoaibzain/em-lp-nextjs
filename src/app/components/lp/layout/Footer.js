@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import CustomCursor from './CustomCursor';
 
 const Footer = ({ title, subtitle, content }) => {
   const [name, setName] = useState('');
@@ -11,6 +12,7 @@ const Footer = ({ title, subtitle, content }) => {
   const [budget, setBudget] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
+  const [focusedField, setFocusedField] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,21 +29,40 @@ const Footer = ({ title, subtitle, content }) => {
     const data = await response.json();
     if (data.success) {
       setStatus({ message: 'Message sent successfully!', isError: false });
+      // Reset form
+      setName('');
+      setCompany('');
+      setEmail('');
+      setPhone('');
+      setServices('');
+      setBudget('');
+      setMessage('');
     } else {
       setStatus({ message: 'Please fill all required fields. Please try again.', isError: true });
     }
-
-    // Reset the form
-    setName('');
-    setCompany('');
-    setEmail('');
-    setPhone('');
-    setServices('');
-    setBudget('');
-    setMessage('');
   };
+
+  // Function to handle input focus
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName);
+  };
+
+  // Function to handle input blur
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
+  // Generate input class based on focus state
+  const getInputClass = (fieldName) => `
+    p-2 text-white bg-transparent border-b-2 
+    ${focusedField === fieldName ? 'border-pink-700' : 'border-zinc-600'} 
+    placeholder:text-zinc-500 focus:outline-none focus:border-pink-700
+    transition-all duration-300 ease-in-out
+  `;
+
   return (
-    <footer id="contact" className="bg-black py-10 px-0 text-white">
+    <footer id="contact" className="bg-black py-10 px-0 text-white relative">
+      <CustomCursor />
       <div className="lg:flex mx-auto w-full container px-4">
         {/* Left Column - Text */}
         <div className="lg:w-1/2 flex flex-col justify-center px-0 sm:px-5 pb-10 lg:pb-0 lg:pr-20">
@@ -52,7 +73,6 @@ const Footer = ({ title, subtitle, content }) => {
 
         {/* Right Column - Form */}
         <div className="lg:w-1/2 px-0 sm:px-5 text-gray-500">
-
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Row 1 - Name and Company */}
             <div className="flex flex-wrap md:flex-nowrap gap-4">
@@ -65,8 +85,10 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  onFocus={() => handleFocus('name')}
+                  onBlur={handleBlur}
                   required 
-                  className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
+                  className={getInputClass('name')}
                 />
               </div>
               <div className="flex flex-col w-full relative">
@@ -78,7 +100,9 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Company Name"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
+                  onFocus={() => handleFocus('company')}
+                  onBlur={handleBlur}
+                  className={getInputClass('company')}
                 />
               </div>
             </div>
@@ -94,8 +118,10 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => handleFocus('email')}
+                  onBlur={handleBlur}
                   required 
-                  className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
+                  className={getInputClass('email')}
                 />
               </div>
               <div className="flex flex-col w-full relative">
@@ -107,8 +133,10 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  onFocus={() => handleFocus('phone')}
+                  onBlur={handleBlur}
                   required 
-                  className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
+                  className={getInputClass('phone')}
                 />
               </div>
             </div>
@@ -122,9 +150,12 @@ const Footer = ({ title, subtitle, content }) => {
                   name="services"
                   value={services}
                   onChange={(e) => setServices(e.target.value)}
+                  onFocus={() => handleFocus('services')}
+                  onBlur={handleBlur}
                   required 
-                  className="p-3  bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
+                  className={getInputClass('services')}
                 >
+                  <option value="">Select a service</option>
                   <option value="Branding & Design">Branding & Design</option>
                   <option value="Web Design">Web Design</option>
                   <option value="SEO Services">SEO Services</option>
@@ -143,7 +174,9 @@ const Footer = ({ title, subtitle, content }) => {
                   placeholder="Budget"
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
-                  className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700"
+                  onFocus={() => handleFocus('budget')}
+                  onBlur={handleBlur}
+                  className={getInputClass('budget')}
                 />
               </div>
             </div>
@@ -157,21 +190,24 @@ const Footer = ({ title, subtitle, content }) => {
                 placeholder="Details of services you require...."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="p-2 text-white bg-transparent border-b-2 border-zinc-600 placeholder:text-zinc-500 focus:outline-none focus:border-pink-700 h-24"
+                onFocus={() => handleFocus('message')}
+                onBlur={handleBlur}
+                className={getInputClass('message')}
               />
             </div>
+
             {status && (
               <p className={status.isError ? 'text-red-700' : 'text-green-700'}>
                 {status.message}
               </p>
             )}
+            
             <button
               type="submit"
-              className="bg-transparent hover:bg-transparent text-white py-2 px-4 underline text-left w-40 hover:text-pink-700 transition-colors"
+              className="bg-transparent hover:bg-transparent text-white py-2 px-4 underline text-left w-40 hover:text-pink-700 transition-colors cursor-pointer"
             >
               Submit Enquiry
             </button>
-
           </form>
         </div>
       </div>

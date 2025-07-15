@@ -11,32 +11,81 @@ div#chakra-content {
   transform-origin: center 63%;
 }
 
+/* Custom Cursor Styles */
 .flare {
   position: fixed;
-  border: 2px solid #e21468;
+  border: 2px solid #014a59;
   border-radius: 50%;
-  mix-blend-mode: screen;
+  mix-blend-mode: difference;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  z-index: 999999 !important ;
+  z-index: 999999;
   backdrop-filter: blur(1px);
   background-color: transparent;
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-  cursor: none !important; /* Let's hide the default cursor so it looks way better */
-  mixblendmode: "difference";
+  transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out;
 }
 
-/* We need to remove this custom cursor in mobile devices */
-@media screen and (max-width: 768px) {
-  .flare {
-    width: 0;
-    height: 0;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
-      opacity 0.2s ease-in-out;
-  }
-}
 .flare.pointer {
   opacity: 0 !important;
-  transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
-    opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-out;
+}
+
+.flare.input-cursor {
+  mix-blend-mode: normal;
+  backdrop-filter: none;
+  border-color: #d5a457;
+}
+
+/* Hide default cursor on interactive elements */
+button,
+input,
+textarea,
+select,
+a {
+  cursor: none;
+}
+
+/* Remove custom cursor for mobile */
+@media (max-width: 768px) {
+  .flare {
+    display: none !important;
+  }
+  
+  button,
+  input,
+  textarea,
+  select,
+  a {
+    cursor: auto;
+  }
+}
+
+/* Animation Fallbacks */
+@supports not (animation-timeline: scroll()) {
+  .text-stroke {
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+  
+  .will-change-transform {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .flare {
+    display: none !important;
+  }
 }
