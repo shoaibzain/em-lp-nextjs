@@ -100,7 +100,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="mx-auto w-full container px-10">
+    <section className="mx-auto w-full px-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left Column */}
         <div className="flex flex-col gap-4">

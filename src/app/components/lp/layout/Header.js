@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <header className="py-3">
-      <nav className="mx-auto w-full container px-10 flex justify-between items-center">
+      <nav className="mx-auto w-full px-10 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center">
           <Link href="/">
