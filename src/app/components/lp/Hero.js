@@ -2,6 +2,10 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react"
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 
 
 const leftColumnImages = [
@@ -99,6 +103,93 @@ export default function Hero() {
     )
   }
 
+  const containerRef = useRef(null);
+  const topBlockRef = useRef(null);
+  const bottomBlockRef = useRef(null);
+  const spanRef = useRef(null);
+  const pRef = useRef(null);
+  const servicesRef = useRef(null); // for "Services"
+
+  useEffect(() => {
+    const topBlock = topBlockRef.current;
+    const bottomBlock = bottomBlockRef.current;
+    const span = spanRef.current;
+    const p = pRef.current;
+    const services = servicesRef.current;
+
+    const chars = span.querySelectorAll(".span-char");
+    const scrollDistance =
+      bottomBlock.offsetTop - topBlock.offsetTop - topBlock.offsetHeight;
+
+    const ctx = gsap.context(() => {
+      // Pin top block
+      ScrollTrigger.create({
+        trigger: topBlock,
+        start: "center center",
+        end: `+=${scrollDistance}`,
+        pin: topBlock,
+        pinSpacing: false,
+        scrub: true,
+      });
+
+      // Fade out <p>
+      gsap.to(p, {
+        scrollTrigger: {
+          trigger: topBlock,
+          start: "center center",
+          end: `+=${scrollDistance * 0.4}`,
+          scrub: true,
+        },
+        opacity: 0,
+        y: -50,
+        ease: "power1.out",
+      });
+
+      // Animate span letters
+      gsap.to(chars, {
+        scrollTrigger: {
+          trigger: topBlock,
+          start: "center center",
+          end: `+=${scrollDistance}`,
+          scrub: true,
+        },
+        opacity: 0,
+        y: -25,
+        stagger: 0.03,
+        ease: "power2.out",
+      });
+
+      // Fade in bottom-block
+      gsap.from(bottomBlock, {
+        scrollTrigger: {
+          trigger: bottomBlock,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power2.out",
+      });
+
+      // 🌈 Smooth color transition for "Services"
+      gsap.to(services, {
+        scrollTrigger: {
+          trigger: bottomBlock,
+          start: "bottom bottom", // bottomBlock touches bottom of screen
+          end: "top 55%",      // ends when it scrolls up
+          scrub: true,
+        },
+        backgroundImage: "linear-gradient(42deg, #D6A456 0%, #AB8134 70%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        ease: "power2.out",
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="mx-auto w-full px-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -115,11 +206,38 @@ export default function Hero() {
             </h1>
           </div>
 
-          <div className="rounded-[2rem] h-[70vh] bg-primary p-6 md:p-10 text-white relative">
-            <p className="text-2xl md:text-4xl font-light font-glancyr mb-2">with our result oriented</p>
-            <h2 className="text-2xl md:text-5xl font-medium font-glancyr">
-              Digital Marketing <br /> Services
-            </h2>
+          <div
+            ref={containerRef}
+            className="rounded-[2rem] h-[70vh] bg-primary p-6 md:p-10 text-white relative flex flex-col justify-between"
+          >
+            <div ref={topBlockRef} className="top-block">
+              <p ref={pRef} className="text-2xl md:text-4xl font-light font-glancyr mb-2">
+                with our result oriented
+              </p>
+              <h2 className="text-2xl md:text-5xl font-medium font-glancyr">
+                <span ref={spanRef} className="inline-block whitespace-nowrap">
+                  {`Digital Marketing`.split("").map((char, i) => (
+                    <span key={i} className="inline-block span-char">{char}</span>
+                  ))}
+                </span>
+                <br />
+                <span
+                  ref={servicesRef}
+                  className="inline-block transition-all duration-500"
+                  style={{ color: "#fff" }} // initially white
+                >
+                  Services
+                </span>
+              </h2>
+            </div>
+            <div ref={bottomBlockRef} className="bottom-block mt-20">
+              <p className="text-2xl md:text-3xl font-light font-glancyr mb-2">That Turn</p>
+              <h2 className="text-2xl md:text-4xl font-medium font-glancyr">
+                Business Challenges
+                <br /> into Opportunities
+              </h2>
+            </div>
+
           </div>
         </div>
 

@@ -65,6 +65,12 @@ div#chakra-content {
   transform-origin: center 63%;
 }
 
+.gradient-text {
+  background: linear-gradient(42deg, #D6A456 0%, #AB8134 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Custom Cursor Styles */
 .flare {
   position: fixed;
