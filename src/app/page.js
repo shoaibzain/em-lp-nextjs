@@ -1,6 +1,6 @@
 import Hero from './components/lp/Hero';
 import Affordable from './components/lp/Affordable';
-import About from './components/lp/About';
+import Services from './components/lp/Services';
 import Portfolio from './components/lp/Portfolio';
 import Footer from './components/lp/layout/Footer';
 
@@ -14,9 +14,9 @@ export default function Home() {
                 backgroundColor="bg-green-600"
             />
             
-            <About />
+            <Services />
 
-            <Affordable />
+            {/* <Affordable /> */}
 
             <Portfolio />
             <Footer
