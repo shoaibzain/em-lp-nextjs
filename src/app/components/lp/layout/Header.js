@@ -21,74 +21,31 @@ export default function Header() {
 
   return (
     <header className="py-3">
-      <nav className="w-full sm:w-4/5 mx-auto px-4 flex justify-between items-center">
+      <nav className="mx-auto w-full container px-10 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center">
           <Link href="/">
             <Image
               src="/images/logo.png"
               alt="Express Marketing"
-              width={120}
+              width={150}
               height={42}
               priority
             />
           </Link>
         </div>
 
-        {/* Center: Navigation Menu */}
-       {/*  <div className="hidden lg:flex">
-          <ul className="flex space-x-5 lg:space-x-7 xl:space-x-10 text-lg text-gray-900 font-medium">
-            {/* {sections.map((section) => (
-              <li key={section.id}>
-                <Link
-                  href={`#${section.id}`}
-                  scroll={true}
-                  className={`hover:text-primary ${section.id === 'hero' ? 'text-primary' : ''}`}
-                >
-                  {section.name}
-                </Link>
-              </li>
-            ))} 
-          </ul>
-        </div>*/}
-
         {/* Right: Phone Number with Icon */}
-        <div className="flex items-center space-x-2 hover:text-primary">
-          <FiPhone className="text-gray-900" size={20} />
-          <Link href="tel:+1234567890" className="text-primary font-bold text-xl">
-            +1 (234) 567-890
-          </Link>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="hidden flex items-center">
-          <button
-            onClick={toggleMenu}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
+        <div className="hover:text-secondary">
+          <a
+            href="tel:+1234567890"
+            className="text-primary hover:text-secondary text-xl font-semibold flex items-center gap-2"
           >
-            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
+            <FiPhone size={20} />
+            +1 (234) 567-890
+          </a>
         </div>
       </nav>
-
-      {/* Mobile Menu */}
-      <div id="mobile-menu" className={`lg:hidden pt-8 lg:pt-0 px-6 pb-4 transition duration-300 ease-in-out ${menuOpen ? 'block' : 'hidden'}`}>
-        <ul className="space-y-4 text-gray-900">
-          {sections.map((section) => (
-            <li key={section.id}>
-              <Link
-                href={`#${section.id}`}
-                scroll={true}
-                className={`hover:text-primary ${section.id === 'hero' ? 'text-primary' : ''}`}
-                onClick={toggleMenu}
-              >
-                {section.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
     </header>
   );
 }

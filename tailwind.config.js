@@ -17,6 +17,7 @@ module.exports = {
       colors: {
         primary: "#014a59",
         secondary: "#d5a457",
+        three: "#bc8e41",
         accent: "#014a59",
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -26,6 +27,7 @@ module.exports = {
       },
       fontFamily: {
         custom: ['ThreatExp', 'sans-serif'],
+        glancyr: ['Glancyr', 'sans-serif'],
     },
     },
   },

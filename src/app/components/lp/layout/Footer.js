@@ -55,20 +55,20 @@ const Footer = ({ title, subtitle, content }) => {
   // Generate input class based on focus state
   const getInputClass = (fieldName) => `
     p-2 text-white bg-transparent border-b-2 
-    ${focusedField === fieldName ? 'border-pink-700' : 'border-zinc-600'} 
-    placeholder:text-zinc-500 focus:outline-none focus:border-pink-700
+    ${focusedField === fieldName ? 'border-secondary' : 'border-zinc-600'} 
+    placeholder:text-zinc-500 focus:outline-none focus:border-secondary
     transition-all duration-300 ease-in-out
   `;
 
   return (
-    <footer id="contact" className="bg-black py-10 px-0 text-white relative">
+    <footer id="contact" className="bg-black pt-36 pb-20 px-0 text-white relative">
       <CustomCursor />
       <div className="lg:flex mx-auto w-full container px-4">
         {/* Left Column - Text */}
         <div className="lg:w-1/2 flex flex-col justify-center px-0 sm:px-5 pb-10 lg:pb-0 lg:pr-20">
           <div className="text-xl mb-5">{subtitle}</div>
           <h2 className="text-5xl font-bold mb-5">{title}</h2>
-          <p>{content}</p>
+          <p className="text-gray-400">{content}</p>
         </div>
 
         {/* Right Column - Form */}
@@ -155,14 +155,14 @@ const Footer = ({ title, subtitle, content }) => {
                   required 
                   className={getInputClass('services')}
                 >
-                  <option value="">Select a service</option>
-                  <option value="Branding & Design">Branding & Design</option>
-                  <option value="Web Design">Web Design</option>
-                  <option value="SEO Services">SEO Services</option>
-                  <option value="Social Media Marketing">Social Media Marketing</option>
-                  <option value="Google Ads Management">Google Ads Management</option>
-                  <option value="Email Marketing">Email Marketing</option>
-                  <option value="Full-Suite Marketing">Full-Suite Marketing</option>
+                  <option value="" className="text-black">Select a service</option>
+                  <option value="Branding & Design" className="text-black">Branding & Design</option>
+                  <option value="Web Design" className="text-black">Web Design</option>
+                  <option value="SEO Services" className="text-black">SEO Services</option>
+                  <option value="Social Media Marketing" className="text-black">Social Media Marketing</option>
+                  <option value="Google Ads Management" className="text-black">Google Ads Management</option>
+                  <option value="Email Marketing" className="text-black">Email Marketing</option>
+                  <option value="Full-Suite Marketing" className="text-black">Full-Suite Marketing</option>
                 </select>
               </div>
               <div className="flex flex-col w-full relative">
@@ -204,7 +204,7 @@ const Footer = ({ title, subtitle, content }) => {
             
             <button
               type="submit"
-              className="bg-transparent hover:bg-transparent text-white py-2 px-4 underline text-left w-40 hover:text-pink-700 transition-colors cursor-pointer"
+              className="bg-transparent hover:bg-transparent text-white py-2 px-4 underline text-left w-40 hover:text-secondary transition-colors cursor-pointer"
             >
               Submit Enquiry
             </button>

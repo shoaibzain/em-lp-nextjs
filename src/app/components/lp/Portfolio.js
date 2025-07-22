@@ -165,19 +165,33 @@ export default function Portfolio() {
     }, []);
 
     return (
-        <section id="portfolio" className="relative w-full text-center pt-20 sm:pt-36 overflow-hidden bg-black">
-            <div className="px-6 sm:px-12 xl:px-20">
-                <div className="absolute z-10 w-full left-2/4 top-2/4 pt-32 xl:pt-0 xl:pb-56 transform translate-x-[-50%] translate-y-[-50%]">
+        <section id="portfolio" className="relative w-full text-center pt-20 sm:pt-36 bg-[#dfdfdf]">
+            <div className="px-6 sm:px-12 xl:px-20 ">
+                <div className="absolute z-50 w-full left-2/4 top-2/4 pt-32 xl:pt-0 xl:pb-56 transform translate-x-[-50%] translate-y-[-50%]">
                     <div id="textportfolio" className="relative inline-block m-auto float-none z-10 opacity-0">
-                        <div className="mb-6 leading-tight text-white text-2xl ">
-                            Like a lion&apos;s roar <br />echoing through the<br /> jungle, a hint of our <br /> creativeminds emerges.
+                        <div className="mb-6 leading-tight text-black text-2xl font-glancyr">
+                            As the first light breaks<br />
+                            the silence, a glimpse of our<br />
+                            creativity unfolds.
                         </div>
-                        <button id="btnportfolio" className="translate-y-12 group inline-flex items-center rounded-full bg-primary px-4 py-2 text-base font-semibold text-white transition-colors hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700">
-                            See full Portfolio
-                        </button>
+                        <a
+                            href="#"
+                            download
+                            className="group relative inline-flex items-center overflow-hidden rounded-full px-6 py-2 text-base font-semibold transition-colors focus:outline-none"
+                        >
+                            {/* Expanding Circle Effect */}
+                            <span className="absolute left-0 top-0 h-full w-10 bg-three transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-secondary rounded-full z-0"></span>
+
+                            {/* Text Content */}
+                            <span className="relative z-10">
+                                <span className="inline-block relative z-10">D</span>ownload Profile
+                            </span>
+                        </a>
+
+
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-y-10 xl:gap-y-0 gap-x-10 relative w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 sm:gap-y-10 xl:gap-y-0 gap-x-10 relative w-full -mb-44 z-10 ">
                     <div id="image1" className="overflow-hidden rounded-3xl will-change-transform">
                         <Image
                             src="/images/por-2.jpg"
@@ -192,14 +206,11 @@ export default function Portfolio() {
                     </div>
                     <div id="image2" className="overflow-hidden rounded-3xl will-change-transform hidden sm:block">
                         <Image
-                            src="/images/por-1.jpg"
-                            alt="Second showcase image"
+                            src="/images/por-6.jpg"
+                            alt="Left showcase image"
                             width={600}
                             height={448}
-                            className="w-full transition-opacity duration-300"
-                            loading="lazy"
-                            placeholder="blur"
-                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg=="
+                            className="w-full"
                         />
                     </div>
                     <div id="image3" className="overflow-hidden rounded-3xl will-change-transform -left-2/4 relative sm:static">
@@ -231,7 +242,7 @@ export default function Portfolio() {
                     </div>
                     <div id="image6" className="overflow-hidden rounded-3xl will-change-transform	">
                         <Image
-                            src="/images/por-6.jpg"
+                            src="/images/por-1.jpg"
                             alt="Left showcase image"
                             width={600}
                             height={448}

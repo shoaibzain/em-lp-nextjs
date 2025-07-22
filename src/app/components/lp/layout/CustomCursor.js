@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 // This functional component represents a custom cursor with a flare effect.
 function CustomCursor() {
@@ -25,8 +25,7 @@ function CustomCursor() {
     };
   };
 
-  // Event handler for the mousemove event.
-  const handleMouseMove = debounce((e) => {
+  const handleMouseMove = useCallback((e) => {
     // Update the cursor position based on the mouse coordinates.
     setPosition({ x: e.clientX, y: e.clientY });
 
@@ -46,7 +45,7 @@ function CustomCursor() {
 
     setIsPointer(isClickable);
     setIsInput(isFormElement);
-  }, 5); // 5ms debounce time for smoother cursor movement
+  }, []); // 5ms debounce time for smoother cursor movement
 
   // Set up an effect to add and remove the mousemove event listener.
   useEffect(() => {
@@ -54,7 +53,7 @@ function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []); // The empty dependency array ensures that this effect runs only once on mount.
+  }, [handleMouseMove]); // The empty dependency array ensures that this effect runs only once on mount.
 
   // Adjust the flare size based on whether the cursor is over a clickable element or a form element.
   const getFlareSize = () => {
