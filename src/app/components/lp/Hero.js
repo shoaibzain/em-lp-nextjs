@@ -142,7 +142,8 @@ export default function Hero() {
         },
         opacity: 0,
         y: -50,
-        ease: "power1.out",
+        duration: 1,
+        ease: "power2.out",
       });
 
       // Animate span letters
@@ -156,6 +157,7 @@ export default function Hero() {
         opacity: 0,
         y: -25,
         stagger: 0.03,
+        duration: 1,
         ease: "power2.out",
       });
 
@@ -163,11 +165,11 @@ export default function Hero() {
       gsap.from(bottomBlock, {
         scrollTrigger: {
           trigger: bottomBlock,
-          start: "top 90%",
+          start: "top 60%",
           toggleActions: "play none none reverse",
         },
         opacity: 0,
-        y: 50,
+        y: 100,
         duration: 1,
         ease: "power2.out",
       });
