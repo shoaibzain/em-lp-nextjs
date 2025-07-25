@@ -16,9 +16,9 @@ export default function Services() {
   const [selected, setSelected] = useState(0);
 
   return (
-    <section className="mx-auto w-full px-10 pt-6 pb-32">
+    <section className="mx-auto w-full lg:px-10 md:px-10 px-5 pt-6 pb-32">
       <div className="flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 w-full px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 w-full md:px-8 px-0 lg:px-8">
 
           {/* Left - Services */}
           <div className="flex flex-col gap-8 justify-center">

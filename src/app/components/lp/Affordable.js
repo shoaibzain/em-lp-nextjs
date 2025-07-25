@@ -17,10 +17,8 @@ const openSans = Open_Sans({
 
 export default function Affordable() {
     useEffect(() => {
-        // Create a matchMedia instance for responsive animations
         const mm = gsap.matchMedia();
 
-        // Initial states
         gsap.set("#packages", {
             visibility: "hidden",
             opacity: 0,
@@ -42,7 +40,7 @@ export default function Affordable() {
             transformOrigin: '50% 50%'
         });
 
-        // Desktop & Tablet Animations (> 768px)
+        // Desktop & Tablet
         mm.add("(min-width: 768px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -50,7 +48,6 @@ export default function Affordable() {
                     start: "top top",
                     end: "+=1200",
                     pin: true,
-                    pinSpacing: true,
                     scrub: 0.5,
                     snap: {
                         snapTo: [0, 0.5, 1],
@@ -72,9 +69,7 @@ export default function Affordable() {
                     duration: 0.8,
                     ease: "power2.inOut"
                 }, ">-0.8")
-                .set("#packages", {
-                    visibility: "visible"
-                })
+                .set("#packages", { visibility: "visible" })
                 .to("#packages", {
                     opacity: 1,
                     scale: 1,
@@ -84,15 +79,14 @@ export default function Affordable() {
                 .addLabel('end');
         });
 
-        // Mobile Animations (< 768px)
+        // Mobile
         mm.add("(max-width: 767px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#how-much-does-it-cost",
                     start: "top top",
-                    end: "+=800",
+                    end: "+=900",
                     pin: true,
-                    pinSpacing: true,
                     scrub: 0.3,
                     snap: {
                         snapTo: [0, 0.5, 1],
@@ -114,9 +108,7 @@ export default function Affordable() {
                     duration: 0.6,
                     ease: "power2.inOut"
                 }, ">-0.6")
-                .set("#packages", {
-                    visibility: "visible"
-                })
+                .set("#packages", { visibility: "visible" })
                 .to("#packages", {
                     opacity: 1,
                     scale: 1,
@@ -126,24 +118,30 @@ export default function Affordable() {
                 .addLabel('end');
         });
 
-        return () => {
-            mm.revert();
-        };
+        return () => mm.revert();
     }, []);
 
     return (
         <section id="affordable" className="affordable z-0 relative">
-            <div id="how-much-does-it-cost" className="min-h-screen flex items-center justify-center relative bg-black z-10 overflow-hidden">
+            <div id="how-much-does-it-cost" className="min-h-screen flex items-end md:items-center justify-center relative bg-black z-10 overflow-hidden">
                 <div className="w-full container relative">
+                    {/* Packages */}
                     <div
                         id="packages"
-                        className="absolute z-20 flex items-center flex-col gap-14 w-full inset-0 justify-center"
+                        className="absolute z-20 min-h-screen w-full flex items-center justify-center inset-0 px-4"
                     >
-                        <Packages />
+                        <div className="w-full max-w-4xl">
+                            <Packages />
+                        </div>
                     </div>
-                    <div className="flex items-center justify-center relative">
-                        <div id="chakra-image" className={`w-full md:w-4/5 lg:w-3/5 xl:w-2/5 border-2 p-4 rounded-2xl ${openSans.className}`}>
-                            <div className="bg-primary-gradient rounded py-48 sm:py-10 text-center">
+
+                    {/* Main Image and Text */}
+                    <div className="flex items-end justify-center h-screen">
+                        <div
+                            id="chakra-image"
+                            className={`w-full md:w-4/5 lg:w-3/5 xl:w-2/5 border-2 p-4 rounded-2xl ${openSans.className}`}
+                        >
+                            <div className="bg-primary-gradient rounded pt-40 pb-10 text-center">
                                 <div id="chakra-content" className="transform-gpu">
                                     <div className="text-4xl md:text-6xl font-bold text-transparent text-stroke bg-clip-text uppercase tracking-tighter">
                                         Big Ideas
@@ -158,13 +156,14 @@ export default function Affordable() {
                                         src="/images/hand.png"
                                         alt="Right showcase image"
                                         width={86}
-                                        height={86}
+                                        height={80}
                                         className="rounded-lg object-cover mx-auto mt-4 sm:mt-10"
                                     />
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

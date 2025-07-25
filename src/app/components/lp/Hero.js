@@ -193,7 +193,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="mx-auto w-full px-10">
+    <section className="mx-auto w-full  px-5 lg:px-10  sm:pl-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left Column */}
         <div className="flex flex-col gap-4">
@@ -201,7 +201,7 @@ export default function Hero() {
             <div className="absolute top-0 right-0 w-24 h-24">
               <Image src="/images/icon.png" alt="icon" fill className="object-cover" />
             </div>
-            <h1 className="text-2xl md:text-5xl font-medium font-glancyr">
+            <h1 className="lg:text-5xl md:text-5xl text-4xl font-medium font-glancyr">
               Think Big. <br />
               Spend Small. <br />
               Grow Fast
@@ -210,7 +210,7 @@ export default function Hero() {
 
           <div
             ref={containerRef}
-            className="rounded-[2rem] h-[70vh] bg-primary p-6 md:p-10 text-white relative flex flex-col justify-between"
+            className="rounded-[2rem] lg:h-[70vh] md:h-[70vh] sm:h-[60vh] bg-primary p-6 md:p-10 text-white relative flex flex-col justify-between"
           >
             <div ref={topBlockRef} className="top-block">
               <p ref={pRef} className="text-2xl md:text-4xl font-light font-glancyr mb-2">
@@ -245,7 +245,7 @@ export default function Hero() {
 
         {/* Right Column (Image Grid) */}
         <div className="flex flex-col gap-4 justify-between">
-          <div className="grid grid-cols-3 gap-1 md:gap-2 rounded-[2rem] h-[calc(100vh-120px)] w-full overflow-hidden">
+          <div className="grid grid-cols-3 gap-1 md:gap-2 rounded-[2rem] h-[calc(100vh-120px)] lg:h-[calc(100vh-120px)] md:h-[calc(70vh-120px)]  w-full overflow-hidden">
             <div className="relative overflow-hidden">
               <div ref={leftColumnRef} className="flex flex-col items-center" style={{ willChange: "transform" }}>
                 {leftImagesWithHeight.map((image) => renderImage(image, "left-1"))}
@@ -267,9 +267,9 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5 px-8">
+          <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-6 mt-5 lg:px-8 md:px-8 px-0">
             {/* See how we work card */}
-            <div className="bg-[#959595] rounded-[2rem] p-6 md:p-8 flex flex-col justify-between min-h-[320px] text-white">
+            <div className="bg-[#959595] rounded-[2rem] p-6 md:p-8 flex flex-col justify-between lg:min-h-[320px] md:min-h-[320px] min-h-[280px] text-white">
               <p className="text-lg font-normal mb-4">
                 Ever wondered how
                 <br />
@@ -282,7 +282,7 @@ export default function Hero() {
             </div>
 
             {/* Meet our expert card */}
-            <div className="bg-three   rounded-[2rem] p-6 md:p-8 flex flex-col justify-between min-h-[320px]">
+            <div className="bg-three   rounded-[2rem] p-6 md:p-8 flex flex-col justify-between lg:min-h-[320px] md:min-h-[320px] min-h-[280px]">
               <p className="text-lg font-normal mb-4">
                 Looking for design      <br />
                 experts who can bring      <br />

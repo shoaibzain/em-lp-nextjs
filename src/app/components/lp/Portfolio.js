@@ -117,7 +117,7 @@ export default function Portfolio() {
                 },
                 {
                     id: "#image6",
-                    transform: "translate(-175.5px, 0px)",
+                    transform: "translate(-350.5px, 0px)",
                 },
             ];
 
